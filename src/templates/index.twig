@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    {% if dev %}
+        <script type="module" src="/src/main.ts"></script>
+        <link rel="stylesheet" href="/src/style.css">
+        <script src="http://localhost:35729/livereload.js?snipver=1"></script>
+    {% else %}
+        <script type="module" src="/assets/{{ jsFile }}"></script>
+    {% endif %}
+</head>
+<body class="bg-gray-50">
+    <div class="container mx-auto p-8">
+        <h1 class="text-3xl font-bold mb-8">Product Data Test</h1>
+        
+        <div class="bg-white p-6 rounded-lg shadow">
+            <h2 class="text-xl font-semibold mb-4">Product Information:</h2>
+            
+            <div class="space-y-2">
+                <p><strong>Name:</strong> {{ product.name }}</p>
+                <p><strong>Price:</strong> ${{ product.price }}</p>
+                <p><strong>Description:</strong> {{ product.description }}</p>
+            </div>
+        </div>
+        <div x-data="toggle" class="mt-8">
+            <button @click="toggle" class="bg-blue-500 text-white px-4 py-2 rounded">Show/Hide</button>
+            <div x-show="open" class="mt-2 p-2 bg-green-100 rounded">Alpine.js test 🎉</div>
+        </div>
+    </div>
+</body>
+</html>

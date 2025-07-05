@@ -1,0 +1,46 @@
+import twig from 'twig';
+import fs from 'fs';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+twig.cache(false);
+
+try {
+	const assetsDir = join(__dirname, '..', 'dist', 'assets');
+	const jsFiles = fs
+		.readdirSync(assetsDir)
+		.filter((file) => file.endsWith('.js'));
+	const mainJsFile = jsFiles.find((file) => file.startsWith('index-'));
+
+	if (!mainJsFile) {
+		throw new Error('Built JS file not found');
+	}
+
+	const productData = JSON.parse(
+		fs.readFileSync('./src/data/product.json', 'utf8')
+	);
+
+	twig.renderFile(
+		'./src/templates/index.twig',
+		{
+			product: productData,
+			title: 'Lucchese - Luxury Shoes',
+			jsFile: mainJsFile,
+		},
+		(err, html) => {
+			if (err) {
+				console.error('❌ Twig rendering error:', err);
+				process.exit(1);
+			}
+
+			const distPath = join(__dirname, '..', 'dist', 'index.html');
+			fs.writeFileSync(distPath, html);
+		}
+	);
+} catch (error) {
+	console.error('❌ Error during Twig build:', error);
+	process.exit(1);
+}
