@@ -15,8 +15,17 @@ try {
 		.filter((file) => file.endsWith('.js'));
 	const mainJsFile = jsFiles.find((file) => file.startsWith('index-'));
 
+	const cssFiles = fs
+		.readdirSync(assetsDir)
+		.filter((file) => file.endsWith('.css'));
+	const mainCssFile = cssFiles.find((file) => file.startsWith('index-'));
+
 	if (!mainJsFile) {
 		throw new Error('Built JS file not found');
+	}
+
+	if (!mainCssFile) {
+		throw new Error('Built CSS file not found');
 	}
 
 	const productData = JSON.parse(
@@ -29,6 +38,7 @@ try {
 			product: productData,
 			title: 'Lucchese - Luxury Shoes',
 			jsFile: mainJsFile,
+			cssFile: mainCssFile,
 		},
 		(err, html) => {
 			if (err) {
