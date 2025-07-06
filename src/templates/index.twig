@@ -13,22 +13,22 @@
         <link rel="stylesheet" href="/assets/{{ cssFile }}">
     {% endif %}
 </head>
-<body class="bg-gray-50">
+<body class="bg-gray-100">
     <div class="container mx-auto p-8">
-        <h1 class="text-3xl font-bold mb-8">Product Data Test</h1>
+        <h1 class="text-3xl font-bold mb-8 text-gray-800">Product Data Test</h1>
         
-        <div class="bg-white p-6 rounded-lg shadow">
-            <h2 class="text-xl font-semibold mb-4">Product Information:</h2>
+        <div class="bg-white p-6 rounded-lg shadow-lg border border-gray-200">
+            <h2 class="text-xl font-semibold mb-4 text-gray-700">Product Information:</h2>
             
             <div class="space-y-2">
-                <p><strong>Name:</strong> {{ product.name }}</p>
-                <p><strong>Price:</strong> ${{ product.price }}</p>
-                <p><strong>Description:</strong> {{ product.description }}</p>
+                <p class="text-gray-600"><strong class="text-gray-800">Name:</strong> {{ product.name }}</p>
+                <p class="text-gray-600"><strong class="text-gray-800">Price:</strong> ${{ product.price }}</p>
+                <p class="text-gray-600"><strong class="text-gray-800">Description:</strong> {{ product.description }}</p>
             </div>
         </div>
         <div x-data="toggle" class="mt-8">
-            <button @click="toggle" class="bg-blue-500 text-white px-4 py-2 rounded">Show/Hide</button>
-            <div x-show="open" class="mt-2 p-2 bg-green-100 rounded">Alpine.js test 🎉</div>
+            <button @click="toggle" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded transition-colors">Show/Hide</button>
+            <div x-show="open" class="mt-2 p-2 bg-green-100 text-green-800 rounded border border-green-200">Alpine.js test 🎉</div>
         </div>
     </div>
 </body>
