@@ -32,23 +32,28 @@ try {
 		fs.readFileSync('./src/data/index.json', 'utf8')
 	);
 
-	twig.renderFile(
-		'./views/templates/index.twig',
-		{
-			index: indexData,
-			jsFile: mainJsFile,
-			cssFile: mainCssFile,
-		},
-		(err, html) => {
-			if (err) {
-				console.error('❌ Twig rendering error:', err);
-				process.exit(1);
-			}
+	const buildData = {
+		...indexData,
+		jsFile: mainJsFile,
+		cssFile: mainCssFile,
+		dev: false,
+	};
 
-			const distPath = join(__dirname, '..', 'dist', 'index.html');
-			fs.writeFileSync(distPath, html);
-		}
+	const mainTemplate = join(
+		__dirname,
+		'..',
+		'views',
+		'templates',
+		'index.twig'
 	);
+	twig.renderFile(mainTemplate, buildData, (err, html) => {
+		if (err) {
+			process.exit(1);
+		}
+
+		const distPath = join(__dirname, '..', 'dist', 'index.html');
+		fs.writeFileSync(distPath, html);
+	});
 } catch (error) {
 	console.error('❌ Error during Twig build:', error);
 	process.exit(1);
