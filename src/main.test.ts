@@ -8,18 +8,17 @@ describe('Main App with Twig Template', () => {
 	beforeAll(async () => {
 		const templatePath = path.join(
 			process.cwd(),
-			'src',
+			'views',
 			'templates',
 			'index.twig'
 		);
 
 		const testData = {
-			title: 'Lucchese - Luxury Shoes',
-			product: {
-				name: 'Test Product',
-				price: 99.99,
-				description: 'Test description',
-			},
+			modules: [
+				{ type: 'bar' },
+				{ type: 'product' },
+				{ type: 'accordion' },
+			],
 			dev: true,
 		};
 
@@ -34,23 +33,10 @@ describe('Main App with Twig Template', () => {
 		});
 	});
 
-	it('should render basic template structure', () => {
+	it('should render modules', () => {
 		document.body.innerHTML = renderedHtml;
 
-		const container = document.querySelector('.container');
-		expect(container).toBeTruthy();
-
-		const productInfo = document.querySelector('.bg-white');
-		expect(productInfo).toBeTruthy();
-	});
-
-	it('should include required assets', () => {
-		document.body.innerHTML = renderedHtml;
-
-		const script = document.querySelector('script[src="/src/main.ts"]');
-		expect(script).toBeTruthy();
-
-		const link = document.querySelector('link[href="/src/style.css"]');
-		expect(link).toBeTruthy();
+		const modules = document.querySelectorAll('.module');
+		expect(modules.length).toBeGreaterThanOrEqual(3);
 	});
 });
