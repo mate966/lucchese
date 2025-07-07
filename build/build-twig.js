@@ -28,15 +28,14 @@ try {
 		throw new Error('Built CSS file not found');
 	}
 
-	const productData = JSON.parse(
-		fs.readFileSync('./src/data/product.json', 'utf8')
+	const indexData = JSON.parse(
+		fs.readFileSync('./src/data/index.json', 'utf8')
 	);
 
 	twig.renderFile(
-		'./src/templates/index.twig',
+		'./views/templates/index.twig',
 		{
-			product: productData,
-			title: 'Lucchese - Luxury Shoes',
+			index: indexData,
 			jsFile: mainJsFile,
 			cssFile: mainCssFile,
 		},

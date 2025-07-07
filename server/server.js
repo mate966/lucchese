@@ -13,6 +13,18 @@ const app = express();
 const PORT = 8000;
 const isDev = process.env.NODE_ENV !== 'production';
 
+process.on('uncaughtException', (err) => {
+	if (err.message && err.message.includes('ENOENT')) {
+		console.error('Twig file not found:', err.message);
+	} else {
+		console.error('Uncaught Exception:', err.message);
+	}
+});
+
+process.on('unhandledRejection', (reason, promise) => {
+	console.error('Unhandled Rejection at:', promise, 'reason:', reason);
+});
+
 twig.cache(false);
 
 const liveReloadServer = livereload.createServer({
@@ -23,6 +35,7 @@ const liveReloadServer = livereload.createServer({
 liveReloadServer.watch([
 	join(__dirname, '..', 'public'),
 	join(__dirname, '..', 'src'),
+	join(__dirname, '..', 'views'),
 ]);
 
 if (isDev) {
@@ -81,28 +94,51 @@ if (!isDev) {
 
 app.get('/', (req, res) => {
 	try {
-		const productData = JSON.parse(
+		const pageData = JSON.parse(
 			fs.readFileSync(
-				join(__dirname, '..', 'src', 'data', 'product.json'),
+				join(__dirname, '..', 'src', 'data', 'index.json'),
 				'utf8'
 			)
 		);
 
-		twig.renderFile(
-			join(__dirname, '..', 'src', 'templates', 'index.twig'),
-			{
-				product: productData,
-				title: 'Lucchese - Luxury Shoes',
-				dev: isDev,
-			},
-			(err, html) => {
-				if (err) {
-					res.status(500).send('Server error');
-					return;
-				}
-				res.send(html);
-			}
+		const templateData = {
+			...pageData,
+			dev: isDev,
+		};
+
+		const mainTemplate = join(
+			__dirname,
+			'..',
+			'views',
+			'templates',
+			'index.twig'
 		);
+
+		if (!fs.existsSync(mainTemplate)) {
+			console.error('Main template not found:', mainTemplate);
+			return res.status(500).send('Main template not found');
+		}
+
+		const renderTemplate = () => {
+			return new Promise((resolve, reject) => {
+				twig.renderFile(mainTemplate, templateData, (err, html) => {
+					if (err) {
+						reject(err);
+					} else {
+						resolve(html);
+					}
+				});
+			});
+		};
+
+		renderTemplate()
+			.then((html) => {
+				res.send(html);
+			})
+			.catch((err) => {
+				console.error('Twig rendering error:', err.message);
+				res.status(500).send(`Błąd renderowania: ${err.message}`);
+			});
 	} catch (error) {
 		res.status(500).send('Server error');
 	}

@@ -1,11 +1,8 @@
-import './style.css';
-import Alpine from '@alpinejs/csp';
+import './styles/main.scss';
 
-Alpine.data('toggle', () => ({
-	open: false,
-	toggle() {
-		this.open = !this.open;
-	},
-}));
+import Site from './ts/Site';
 
-Alpine.start();
+window.addEventListener('load', () => {
+	const site = new Site();
+	site.init();
+});
