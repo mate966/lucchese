@@ -1,0 +1,18 @@
+@layer utilities {
+	.tw-center {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.tw-center-x {
+		display: flex;
+		justify-content: center;
+	}
+
+	.tw-center-y {
+		display: flex;
+		align-items: center;
+	}
+}

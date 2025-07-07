@@ -1,21 +1,17 @@
-import Alpine from '@alpinejs/csp';
+import Alpine from 'alpinejs';
+import { AlpineManager } from './Alpine';
 
 class Site {
-	init() {
-		Alpine.data('toggle', () => ({
-			open: false,
-			toggle() {
-				this.open = !this.open;
-			},
-		}));
+	private alpineManager: AlpineManager;
 
+	constructor() {
+		this.alpineManager = new AlpineManager();
+	}
+
+	init() {
+		this.alpineManager.registerComponentsInAlpine();
 		Alpine.start();
 	}
 }
 
 export default Site;
-
-window.addEventListener('load', () => {
-	const site = new Site();
-	site.init();
-});

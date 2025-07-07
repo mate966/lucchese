@@ -6,16 +6,21 @@
     <title>{{ title }}</title>
     {% if dev %}
         <link rel="stylesheet" href="/src/styles/main.scss">
+        <script type="module" src="/src/main.ts"></script>
         <script src="http://localhost:35729/livereload.js?snipver=1"></script>
     {% else %}
         <script type="module" src="/assets/{{ jsFile }}"></script>
         <link rel="stylesheet" href="/assets/{{ cssFile }}">
     {% endif %}
 </head>
-<body class="flex flex-col h-screen items-center justify-center bg-gray-900 text-white">
+<body class="">
+
+    <div x-data="button" class="tw-text-primary">
     {% include '../scaffold/s_header.twig' %}
+    {% include '../scaffold/s_menu.twig' %}
+    </div>
     
-    <div class="wrapper" id="wrapper">
+    <div class="wrapper tw-text-primary" id="wrapper">
         <main id="content" class="content" aria-live="polite" role="main" aria-label="Main content">
             <div class="container">
                 {% for module in modules %}

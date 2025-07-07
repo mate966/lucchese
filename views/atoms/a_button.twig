@@ -1,3 +1,12 @@
-<div class="a-button">
-    button
-</div>
+<button 
+    class="tw-center tw-bg-transparent tw-border-none tw-w-full tw-h-full" 
+    {{ onclick ? '@click="' ~ onclick ~ '"' : '' }}
+    {{ ariaExpanded ? ':aria-expanded="' ~ ariaExpanded ~ '"' : '' }}
+    {{ ariaLabel ? ':aria-label="' ~ ariaLabel ~ '"' : '' }}
+    {{ ariaHasPopup ? 'aria-haspopup="' ~ ariaHasPopup ~ '"' : '' }}
+    {{ tabindex ? 'tabindex="' ~ tabindex ~ '"' : '' }}
+>
+    {% if icon %}
+        {% include '../icons/' ~ icon ~ '.twig' %}
+    {% endif %}
+</button>
