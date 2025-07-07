@@ -9,16 +9,18 @@ const __dirname = dirname(__filename);
 twig.cache(false);
 
 try {
-	const assetsDir = join(__dirname, '..', 'dist', 'assets');
+	const jsDir = join(__dirname, '..', 'dist', 'js');
+	const cssDir = join(__dirname, '..', 'dist', 'css');
+	
 	const jsFiles = fs
-		.readdirSync(assetsDir)
+		.readdirSync(jsDir)
 		.filter((file) => file.endsWith('.js'));
-	const mainJsFile = jsFiles.find((file) => file.startsWith('index-'));
+	const mainJsFile = jsFiles.find((file) => file.startsWith('index-')) || jsFiles[0];
 
 	const cssFiles = fs
-		.readdirSync(assetsDir)
+		.readdirSync(cssDir)
 		.filter((file) => file.endsWith('.css'));
-	const mainCssFile = cssFiles.find((file) => file.startsWith('index-'));
+	const mainCssFile = cssFiles.find((file) => file.startsWith('main-')) || cssFiles[0];
 
 	if (!mainJsFile) {
 		throw new Error('Built JS file not found');

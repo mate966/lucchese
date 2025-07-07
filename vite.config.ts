@@ -1,4 +1,19 @@
 import { defineConfig } from 'vite';
+import copyImages from './build/vite-plugins/copyImages';
+
+const outputConfig = {
+	entryFileNames: 'js/[name]-[hash].js',
+	chunkFileNames: 'js/[name]-[hash].js',
+	assetFileNames: ({ name }) => {
+		if (/\.(jpe?g|png)$/i.test(name ?? '')) {
+			return 'assets/images/[name][extname]';
+		}
+		if (/\.css$/.test(name ?? '')) {
+			return 'css/[name]-[hash][extname]';
+		}
+		return '[name]-[hash][extname]';
+	},
+};
 
 export default defineConfig({
 	appType: 'custom',
@@ -17,5 +32,10 @@ export default defineConfig({
 	},
 	build: {
 		outDir: 'dist',
+		sourcemap: false,
+		rollupOptions: {
+			output: outputConfig,
+		},
 	},
+	plugins: [copyImages()],
 });
