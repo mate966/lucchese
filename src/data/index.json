@@ -51,11 +51,18 @@
 				},
 				{
 					"title": "Material",
-					"leading": "Suede",
+					"heading": {
+						"text": "Suede"
+					},
 					"content": "Suede is made from the inside of an animal skin (whereas other leathers are the outside of the skin). It has a distinctive shaggy nap. This stead suede features a sandwich-like detail where the cutaway edges showcase a distinct vibrant color that complements the rugged nap. The beautifully rich suede colors bring playfulness while the texture adds character.labore et dolore magna aliqua.",
 					"image": {
-						"src": "",
-						"mobile": ""
+						"desktop": {
+							"src": "src/assets/images/product-1.jpg",
+							"alt": "Suede material"
+						},
+						"mobile": {
+							"src": "src/assets/images/accordion-image-1-m.jpg"
+						}
 					}
 				},
 				{
@@ -66,8 +73,13 @@
 					},
 					"content": "Clean: Remove loose dust and dirt with a stiff bristle brush. Condition: Apply Lucchese Leather Conditioner liberally. Protect: Apply Lucchese Premium Leather Protector.",
 					"image": {
-						"src": "",
-						"mobile": ""
+						"desktop": {
+							"src": "src/assets/images/product-2.jpg",
+							"alt": "Cleaning products"
+						},
+						"mobile": {
+							"src": "src/assets/images/accordion-image-2-m.jpg"
+						}
 					}
 				}
 			]

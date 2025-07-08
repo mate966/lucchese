@@ -9,3 +9,13 @@ $browser-context: 16px;
 @function rem($size) {
 	@return math.div(strip-units($size), strip-units($browser-context)) + rem;
 }
+
+@mixin font-size($size: $browser-context, $line: $line-height) {
+	font-size: strip-units($size) + px;
+	font-size: rem($size);
+	@if (strip-units($line) < 4) {
+		line-height: strip-units($line);
+	} @else {
+		line-height: math.div(strip-units($line), strip-units($size));
+	}
+}

@@ -12,17 +12,28 @@
         <hr class="tw-h-[1px] tw-w-full tw-bg-neutrals-40">
     </div>
 
-    <div :class="isOpen && 'is-open'" class="c-accordion-item__content">
+    <div :class="isOpen && 'is-open'" class="c-accordion-item__content tw-text-black">
         <div class="c-accordion-item__content-inner">
-        <p class="tw-pt-5 tw-mb-6">{{ item.content }}</p>
 
-        {% if item.listItems %}
-        <ul class="c-accordion-item__list tw-my-[18px] tw-pb-4">
-            {% for listItem in item.listItems %}
-            <li class="c-accordion-item__list-item tw-pl-9">{{ listItem.text }}</li>
-                {% endfor %}
-            </ul>
+            {% if item.heading %}
+            <p class="{% if item.heading.modifier %}typo-h3--{{ item.heading.modifier }}{% endif %} typo-h3 tw-text-primary">{{ item.heading.text }}</p>
             {% endif %}
+
+            <p class="tw-mt-5 tw-mb-6">{{ item.content }}</p>
+
+            {% if item.listItems %}
+            <ul class="c-accordion-item__list tw-my-[18px] tw-pb-4">
+                {% for listItem in item.listItems %}
+                <li class="c-accordion-item__list-item tw-pl-9">{{ listItem.text }}
+                </li>
+                {% endfor %}
+                </ul>
+                {% endif %}
+
+            {% if item.image %}
+            {% include '../atoms/a_picture.twig' with { image: item.image, alt: item.image.alt } %}
+            {% endif %}
+
         </div>
     </div>
 

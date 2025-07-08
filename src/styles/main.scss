@@ -11,6 +11,9 @@
 @use './_reset.scss';
 @use './_base.scss';
 
+// Typography
+@use './typography/_h3.scss';
+
 // Atoms
 @use './atoms/_button.scss';
 @use './atoms/_icon.scss';
