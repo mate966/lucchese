@@ -1,5 +1,5 @@
 import type { AlpineComponent } from './types';
-import { buttonComponent } from './components/Button';
+import { buttonComponent, accordionComponent } from './components/Toggle';
 import Alpine from 'alpinejs';
 
 declare global {
@@ -19,7 +19,8 @@ export class AlpineManager {
 	}
 
 	private registerDefaultComponents(): void {
-		this.registerComponent('button', buttonComponent);
+		this.registerComponent('toggle', buttonComponent);
+		this.registerComponent('accordion', accordionComponent);
 	}
 
 	registerComponent(

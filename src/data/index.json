@@ -8,7 +8,69 @@
 			"type": "product"
 		},
 		{
-			"type": "accordion"
+			"type": "accordion",
+			"items": [
+				{
+					"title": "Description",
+					"content": "Our No. 1 bestselling boot for women, Priscilla walks an elegant line between timeless classic and cowgirl chic. The vintage-inspired Tioga stitch pattern harks back to yesteryear, but Priscilla is a boot built for today. This knee-skimming, pull-on silhouette handcrafted from Maracca suede deserves the spotlight under dresses and over jeans. Handmade in Texas.",
+					"listItems": [
+						{
+							"text": "English suede vamps"
+						},
+						{
+							"text": "English suede quarters"
+						},
+						{
+							"text": "17-inch quarters"
+						},
+						{
+							"text": "Tioga quarter stitch pattern"
+						},
+						{
+							"text": "Detailed vamp stitch pattern"
+						},
+						{
+							"text": "CJ pull straps with overlay"
+						},
+						{
+							"text": "Natural stacked-leather heel"
+						},
+						{
+							"text": "Single-stitched welt"
+						},
+						{
+							"text": "Leather outsole"
+						},
+						{
+							"text": "Natural stacked-leather heel"
+						},
+						{
+							"text": "Handmade in Texas"
+						}
+					]
+				},
+				{
+					"title": "Material",
+					"leading": "Suede",
+					"content": "Suede is made from the inside of an animal skin (whereas other leathers are the outside of the skin). It has a distinctive shaggy nap. This stead suede features a sandwich-like detail where the cutaway edges showcase a distinct vibrant color that complements the rugged nap. The beautifully rich suede colors bring playfulness while the texture adds character.labore et dolore magna aliqua.",
+					"image": {
+						"src": "",
+						"mobile": ""
+					}
+				},
+				{
+					"title": "Care",
+					"heading": {
+						"text": "Instructions",
+						"modifier": "preheading"
+					},
+					"content": "Clean: Remove loose dust and dirt with a stiff bristle brush. Condition: Apply Lucchese Leather Conditioner liberally. Protect: Apply Lucchese Premium Leather Protector.",
+					"image": {
+						"src": "",
+						"mobile": ""
+					}
+				}
+			]
 		},
 		{
 			"type": "related"

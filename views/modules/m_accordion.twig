@@ -1,3 +1,7 @@
-<div class="accordion">
-    accordion
+<div class="m-accordion">
+    <ul class="m-accordion__container tw-px-4 tw-mb-[72px]">
+        {% for item in items %}
+        {% include '../components/c_accordion-item.twig' with item %}
+        {% endfor %}
+    </ul>
 </div>

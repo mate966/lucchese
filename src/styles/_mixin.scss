@@ -1,0 +1,11 @@
+@use 'sass:math';
+
+$browser-context: 16px;
+
+@function strip-units($value) {
+	@return math.div($value, ($value * 0 + 1));
+}
+
+@function rem($size) {
+	@return math.div(strip-units($size), strip-units($browser-context)) + rem;
+}

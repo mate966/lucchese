@@ -1,0 +1,29 @@
+<li class="c-accordion-item" x-data="accordion()">
+    <div class="c-accordion-item__button">
+        {% include '../atoms/a_button.twig' with {
+            icons: ['i_plus', 'i_minus'],
+            text: item.title,
+            ariaLabel: 'isOpen ? `close accordion` : `open accordion`',
+            ariaExpanded: 'isOpen',
+            tabindex: '0',
+            onclick: 'toggle()',
+            xShow: 'isOpen',
+        } %}
+        <hr class="tw-h-[1px] tw-w-full tw-bg-neutrals-40">
+    </div>
+
+    <div :class="isOpen && 'is-open'" class="c-accordion-item__content">
+        <div class="c-accordion-item__content-inner">
+        <p class="tw-pt-5 tw-mb-6">{{ item.content }}</p>
+
+        {% if item.listItems %}
+        <ul class="c-accordion-item__list tw-my-[18px] tw-pb-4">
+            {% for listItem in item.listItems %}
+            <li class="c-accordion-item__list-item tw-pl-9">{{ listItem.text }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+    </div>
+
+</li>

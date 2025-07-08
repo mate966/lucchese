@@ -1,12 +1,23 @@
 <button 
-    class="tw-center tw-bg-transparent tw-border-none tw-w-full tw-h-full" 
+    class="a-button {{ classes|join(' ') }}"
     {{ onclick ? '@click="' ~ onclick ~ '"' : '' }}
     {{ ariaExpanded ? ':aria-expanded="' ~ ariaExpanded ~ '"' : '' }}
     {{ ariaLabel ? ':aria-label="' ~ ariaLabel ~ '"' : '' }}
     {{ ariaHasPopup ? 'aria-haspopup="' ~ ariaHasPopup ~ '"' : '' }}
     {{ tabindex ? 'tabindex="' ~ tabindex ~ '"' : '' }}
 >
-    {% if icon %}
-        {% include '../icons/' ~ icon ~ '.twig' %}
+    {% if text %}{{ text }}{% endif %}
+
+    {% if icons %}
+    <div class="a-button__icons">
+        {% for icon in icons %}
+        <div 
+            class="a-button__icon"{% if xShow %} 
+            x-show="{{ loop.first ? '!' : '' }}{{xShow}}"{% endif %}
+        >
+            {% include '../atoms/a_icon.twig' with { icon: icon } %}
+        </div>
+        {% endfor %}
+    </div>
     {% endif %}
 </button>

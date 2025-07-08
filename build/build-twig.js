@@ -20,7 +20,7 @@ try {
 	const cssFiles = fs
 		.readdirSync(cssDir)
 		.filter((file) => file.endsWith('.css'));
-	const mainCssFile = cssFiles.find((file) => file.startsWith('main-')) || cssFiles[0];
+	const mainCssFile = cssFiles.find((file) => file.startsWith('index-')) || cssFiles[0];
 
 	if (!mainJsFile) {
 		throw new Error('Built JS file not found');
@@ -54,7 +54,8 @@ try {
 		}
 
 		const distPath = join(__dirname, '..', 'dist', 'index.html');
-		fs.writeFileSync(distPath, html);
+		const htmlOut = html.replace(/src\/assets\/images\//g, '/assets/images/');
+		fs.writeFileSync(distPath, htmlOut);
 	});
 } catch (error) {
 	console.error('❌ Error during Twig build:', error);

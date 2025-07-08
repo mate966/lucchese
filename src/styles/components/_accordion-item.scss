@@ -1,0 +1,52 @@
+@use '../_breakpoints.scss' as *;
+@use '../_mixin.scss' as *;
+
+.c-accordion-item {
+	&__content {
+		display: grid;
+		grid-template-rows: 0fr;
+		transition: grid-template-rows 0.3s ease-in-out;
+
+		&.is-open {
+			grid-template-rows: 1fr;
+		}
+	}
+
+	&__content-inner {
+		overflow: hidden;
+	}
+
+	&__button {
+		.a-button {
+			position: relative;
+			padding: rem(21) rem(34) rem(21) 0;
+			width: 100%;
+			text-align: left;
+
+			&__icons {
+				position: absolute;
+				right: rem(15);
+				top: 50%;
+				width: rem(24);
+				height: rem(24);
+				translate: 0 -50%;
+			}
+		}
+	}
+
+	li {
+		position: relative;
+
+		&::before {
+			content: '';
+			position: absolute;
+			top: 50%;
+			left: rem(16);
+			width: rem(6);
+			height: rem(6);
+			border-radius: 50%;
+			background-color: black;
+			translate: 0 -50%;
+		}
+	}
+}

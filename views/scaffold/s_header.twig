@@ -1,11 +1,13 @@
 <header class="s-header tw-relative tw-flex tw-justify-between tw-items-stretch tw-pt-1.5 tw-h-16">
     <div class="tw-center tw-w-14">
         {% include '../atoms/a_button.twig' with {
-            icon: 'i_hamburger',
+            icons: ['i_hamburger', 'i_close'],
+            classes: ['tw-center', 'tw-bg-transparent', 'tw-border-none', 'tw-w-full', 'tw-h-full'],
             ariaLabel: 'menuOpen ? `close main menu` : `open main menu`',
             ariaExpanded: 'menuOpen',
             tabindex: '0',
             onclick: 'toggle()',
+            xShow: 'menuOpen',
         } %}
     </div>
     <a href="https://www.lucchese.com" class="tw-absolute tw-left-1/2 -tw-translate-x-1/2 tw-top-1/2 -tw-translate-y-1/2">
@@ -13,10 +15,10 @@
     </a>
     <div class="tw-center">
         <div class="tw-w-14">
-        {% include '../atoms/a_button.twig' with { icon: 'i_search' } %}
+        {% include '../atoms/a_button.twig' with { icons: ['i_search'] } %}
         </div>
         <div class="tw-w-14">
-        {% include '../atoms/a_button.twig' with { icon: 'i_cart' } %}
+        {% include '../atoms/a_button.twig' with { icons: ['i_cart'] } %}
         </div>
     </div>
 </header>
