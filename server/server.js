@@ -6,6 +6,8 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import fs from 'fs';
 
+import apiRouter from './api/index.js';
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
@@ -87,6 +89,8 @@ if (isDev) {
 }
 
 app.use(express.static(join(__dirname, '..', 'public')));
+
+app.use('/api', apiRouter);
 
 if (!isDev) {
 	app.use('/src', express.static(join(__dirname, '..', 'src')));

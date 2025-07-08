@@ -1,0 +1,69 @@
+[
+	{
+		"id": "GY4579.S54-2019-B-6",
+		"bestSeller": true,
+		"title": "Priscilla Suede",
+		"price": 1.095,
+		"description": "Our No. 1 bestselling boot for women, Priscilla walks an elegant line between timeless classic and cowgirl chic. The vintage-inspired Tioga stitch pattern harks back to yesteryear, but Priscilla is...",
+		"gallery": [
+			"src/assets/images/product/product-image-1.webp",
+			"src/assets/images/product/product-image-2.webp",
+			"src/assets/images/product/product-image-3.webp",
+			"src/assets/images/product/product-image-4.webp",
+			"src/assets/images/product/product-image-5.webp",
+			"src/assets/images/product/product-image-6.webp",
+			"src/assets/images/product/product-image-7.webp",
+			"src/assets/images/product/product-image-8.webp",
+			"src/assets/images/product/product-image-9.webp"
+		],
+		"color": {
+			"name": "Espresso",
+			"pattern": "src/assets/images/patterns/pattern-suede-espresso.webp"
+		},
+		"colors": [
+			{
+				"name": "Glitz Cream",
+				"pattern": "src/assets/images/patterns/pattern-glitz-cream.webp"
+			},
+			{
+				"name": "Red",
+				"pattern": "src/assets/images/patterns/pattern-red.webp"
+			},
+			{
+				"name": "Black",
+				"pattern": "src/assets/images/patterns/pattern-black.webp"
+			},
+			{
+				"name": "Brown",
+				"pattern": "src/assets/images/patterns/pattern-brown.webp"
+			},
+			{
+				"name": "Patent Black",
+				"pattern": "src/assets/images/patterns/pattern-patent-black.webp"
+			},
+			{
+				"name": "Suede Emerald",
+				"pattern": "src/assets/images/patterns/pattern-suede-emerald.webp"
+			},
+			{
+				"name": "Red Luster",
+				"pattern": "src/assets/images/patterns/pattern-red-luster.webp"
+			},
+			{
+				"name": "Brown",
+				"pattern": "src/assets/images/patterns/pattern-brown.webp"
+			},
+			{
+				"name": "Cream Orange",
+				"url": "/product/GY4579.S54-2019-B-1"
+			},
+			{
+				"name": "Cream Stiching",
+				"pattern": "src/assets/images/patterns/pattern-cream-stiching.webp"
+			}
+		],
+		"sizes": [6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11],
+		"width": "B",
+		"ToeHeel": "S5 + 4"
+	}
+]
