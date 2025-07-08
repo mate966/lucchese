@@ -1,0 +1,21 @@
+export interface Product {
+	id: string;
+	title: string;
+	price: number;
+	description: string;
+	gallery: string[];
+	colors: {
+		name: string;
+		pattern?: string;
+		url?: string;
+	}[];
+	sizes: number[];
+	width: string;
+	toeHeel: string;
+}
+
+export interface ApiResponse<T> {
+	success: boolean;
+	data: T;
+	message?: string;
+}

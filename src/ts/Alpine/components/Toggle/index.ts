@@ -1,38 +1,55 @@
-import type { ToggleState, ToggleConfig } from './types';
+import type { ToggleState } from './types';
 
-export const createToggleComponent = (config: ToggleConfig) => {
-	return (props: Partial<ToggleState> = {}): ToggleState => {
-		const state: ToggleState = {
-			[config.stateName]:
-				props[config.stateName] ?? config.initialState ?? false,
-			disabled: props.disabled ?? config.disabled ?? false,
-			loading: props.loading ?? config.loading ?? false,
+export abstract class BaseToggleComponent implements ToggleState {
+	[key: string]: boolean | (() => void) | undefined;
+	disabled = false;
+	loading = false;
 
-			toggle() {
-				if (!this.disabled && !this.loading) {
-					this[config.stateName] = !this[config.stateName];
-				}
-			},
+	abstract toggle(): void;
+	abstract close(): void;
+	abstract open(): void;
+}
 
-			close() {
-				this[config.stateName] = false;
-			},
+export class ButtonComponent extends BaseToggleComponent {
+	menuOpen = false;
 
-			open() {
-				this[config.stateName] = true;
-			},
-		};
+	toggle(): void {
+		if (!this.disabled && !this.loading) {
+			this.menuOpen = !this.menuOpen;
+		}
+	}
 
-		return state;
-	};
+	close(): void {
+		this.menuOpen = false;
+	}
+
+	open(): void {
+		this.menuOpen = true;
+	}
+}
+
+export class AccordionComponent extends BaseToggleComponent {
+	isOpen = false;
+
+	toggle(): void {
+		if (!this.disabled && !this.loading) {
+			this.isOpen = !this.isOpen;
+		}
+	}
+
+	close(): void {
+		this.isOpen = false;
+	}
+
+	open(): void {
+		this.isOpen = true;
+	}
+}
+
+export const buttonComponent = (): ToggleState => {
+	return new ButtonComponent();
 };
 
-export const buttonComponent = createToggleComponent({
-	stateName: 'menuOpen',
-	initialState: false,
-});
-
-export const accordionComponent = createToggleComponent({
-	stateName: 'isOpen',
-	initialState: false,
-});
+export const accordionComponent = (): ToggleState => {
+	return new AccordionComponent();
+};

@@ -46,7 +46,7 @@ if (isDev) {
 	app.use((req, res, next) => {
 		res.setHeader(
 			'Content-Security-Policy',
-			"default-src 'self' http://localhost:35729; script-src 'self' http://localhost:35729 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; connect-src 'self' ws://localhost:35729 ws://localhost:8000 ws://localhost:5173"
+			"default-src 'self' http://localhost:35729; script-src 'self' http://localhost:35729 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; connect-src 'self' ws://localhost:35729 ws://localhost:8000 ws://localhost:5173"
 		);
 		next();
 	});
@@ -89,6 +89,8 @@ if (isDev) {
 }
 
 app.use(express.static(join(__dirname, '..', 'public')));
+
+app.use('/assets', express.static(join(__dirname, '..', 'src', 'assets')));
 
 app.use('/api', apiRouter);
 

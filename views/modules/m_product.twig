@@ -1,3 +1,16 @@
-<div class="product">
-    product
+<div class="m-product" x-data="product()" x-init="loadProduct('GY4579.S54-2019-B-6')">
+    {% include '../scaffold/s_spinner.twig' %}
+    
+    
+    <div x-show="error" class="m-product__error tw-text-red-600 tw-text-center tw-p-4">
+        <div x-text="error"></div>
+    </div>
+
+    <div x-show="product && !loading" class="m-product__content tw-container">
+        <div class="tw-grid tw-grid-cols-1 lg:tw-grid-cols-2 tw-gap-6">
+            {% include '../components/c_product-gallery.twig' %}
+
+            {% include '../components/c_product-info.twig' %}
+        </div>
+    </div>
 </div>

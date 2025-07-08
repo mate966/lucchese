@@ -20,6 +20,12 @@
 
 // Components
 @use './components/_accordion-item.scss';
+@use './components/_product-info.scss';
+
+// Swiper styles
+@use 'swiper/css';
+@use 'swiper/css/navigation';
+@use 'swiper/css/thumbs';
 
 @tailwind base;
 @tailwind components;

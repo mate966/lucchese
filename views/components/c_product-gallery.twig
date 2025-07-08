@@ -1,0 +1,23 @@
+<template x-if="product && product.gallery">
+    <div class="m-product__gallery">
+        <div class="swiper product-swiper">
+            <div class="swiper-wrapper">
+                <template x-for="(image, index) in product.gallery" :key="index">
+                    <div class="swiper-slide">
+                        <img :src="image" :alt="product.title" class="tw-w-full tw-h-auto tw-object-cover">
+                    </div>
+                </template>
+            </div>
+        </div>
+
+        <div class="swiper product-thumbs tw-mt-[1px]">
+            <div class="swiper-wrapper">
+                <template x-for="(image, index) in product.gallery" :key="index">
+                    <div class="swiper-slide tw-cursor-pointer" @click="goToImage(index)">
+                        <img :src="image" :alt="product.title" class="tw-w-full tw-object-cover">
+                    </div>
+                </template>
+            </div>
+        </div>
+    </div>
+</template>
