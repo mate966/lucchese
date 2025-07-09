@@ -1,0 +1,23 @@
+.a-color-item {
+	&__image {
+		position: relative;
+
+		&::before {
+			content: '';
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			translate: -50% -50%;
+			width: 48px;
+			height: 48px;
+			background-color: transparent;
+			border: 1px solid theme('colors.neutrals.40');
+			border-radius: 100%;
+
+			.is-active & {
+				border-width: 2px;
+				border-color: theme('colors.primary.DEFAULT');
+			}
+		}
+	}
+}

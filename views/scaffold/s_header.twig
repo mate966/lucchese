@@ -15,10 +15,16 @@
     </a>
     <div class="tw-center">
         <div class="tw-w-14">
-        {% include '../atoms/a_button.twig' with { icons: ['i_search'] } %}
+        {% include '../atoms/a_button.twig' with { 
+            icons: ['i_search'],
+            classes: ['tw-center', 'tw-bg-transparent', 'tw-border-none', 'tw-w-full', 'tw-h-full'],
+        } %}
         </div>
         <div class="tw-w-14">
-        {% include '../atoms/a_button.twig' with { icons: ['i_cart'] } %}
+        {% include '../atoms/a_button.twig' with { 
+            icons: ['i_cart'],
+            classes: ['tw-center', 'tw-bg-transparent', 'tw-border-none', 'tw-w-full', 'tw-h-full'],
+        } %}
         </div>
     </div>
 </header>

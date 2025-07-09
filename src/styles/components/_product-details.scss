@@ -1,0 +1,16 @@
+@use '../_mixin.scss' as *;
+
+.c-product-details {
+	&__color-heading {
+		span:first-child::after {
+			content: ':';
+			display: inline-block;
+			color: theme('colors.neutrals.80');
+			font-size: rem(13);
+		}
+	}
+
+	.a-color-item {
+		@include flex(row, flex-start, flex-end);
+	}
+}

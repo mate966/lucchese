@@ -1,0 +1,62 @@
+<template x-if="product">
+    <div class="c-product-details tw-px-4">
+        <div class="c-product-details__top">
+            <div class="tw-pt-1.5 tw-text-neutrals-80 tw-leading-lg">
+                <p><span x-text="`$${product.price}`"></span></p>
+            </div>
+
+            <h1 class="tw-mt-0.5 tw-text-heading-28 tw-text-primary tw-font-light tw-tracking-light tw-uppercase" x-text="product.title"></h1>
+        </div>
+
+        <div class="c-product-details__middle tw-mt-6">
+            <div class="c-product-details__colors tw-mb-8">
+                <div class="c-product-details__color-heading">
+                    <span class="tw-inline-block tw-py-[6px] tw-text-neutrals-80 tw-leading-lg">Color</span>
+                    <span class="tw-inline-block tw-pl-1 tw-text-black" x-text="product.color.name"></span>
+                </div>
+
+                {% include '../components/c_colors-select.twig' %}
+            </div>
+
+            <hr class="tw-my-6 tw-h-px tw-w-full tw-bg-neutrals-40">
+            <div class="c-product-details__id tw-text-md tw-leading-md tw-text-neutrals-80 tw-uppercase">
+                <p>Style No.<span x-text="product.id"></span></p>
+            </div>
+            <hr class="tw-my-6 tw-h-px tw-w-full tw-bg-neutrals-40">
+
+            <div class="c-product-details__description tw-text-gray-600 tw-mb-8" x-text="product.description"></div>
+
+            <div class="c-product-details__sizes tw-mb-8">
+                <h3 class="tw-text-lg tw-font-semibold tw-mb-4">Size</h3>
+                <div class="tw-grid tw-grid-cols-3 tw-gap-3">
+                    <template x-for="size in product.sizes" :key="size">
+                        <button 
+                            @click="selectSize({size: size, width: product.width, toe: product.ToeHeel.split(' ')[0], heel: product.ToeHeel.split(' ')[2]})"
+                            :class="{
+                                'tw-bg-black tw-text-white': selectedSize && selectedSize.size === size,
+                                'tw-bg-gray-100 tw-text-black hover:tw-bg-gray-200': !selectedSize || selectedSize.size !== size
+                            }"
+                            class="c-product-details__size-option tw-px-4 tw-py-3 tw-border tw-border-gray-300 tw-rounded tw-transition-colors"
+                        >
+                            <div class="tw-text-center">
+                                <div class="tw-font-semibold" x-text="size"></div>
+                                <div class="tw-text-sm tw-opacity-75" x-text="`${product.width} ${product.ToeHeel}`"></div>
+                            </div>
+                        </button>
+                    </template>
+                </div>
+            </div>
+
+            <button 
+                @click="addToCart()"
+                class="c-product-details__add-to-cart tw-w-full tw-bg-black tw-text-white tw-py-4 tw-px-6 tw-rounded tw-font-semibold hover:tw-bg-gray-800 tw-transition-colors tw-mb-4"
+            >
+                Add to Cart
+            </button>
+        </div>
+
+        <div class="c-product-details__bottom">
+
+        </div>
+    </div>
+</template>

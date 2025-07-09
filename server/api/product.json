@@ -3,7 +3,7 @@
 		"id": "GY4579.S54-2019-B-6",
 		"bestSeller": true,
 		"title": "Priscilla Suede",
-		"price": 1.095,
+		"price": "1,095",
 		"description": "Our No. 1 bestselling boot for women, Priscilla walks an elegant line between timeless classic and cowgirl chic. The vintage-inspired Tioga stitch pattern harks back to yesteryear, but Priscilla is...",
 		"gallery": [
 			"/assets/images/product/product-image-1-m.webp",
@@ -42,6 +42,11 @@
 				"url": "https://www.lucchese.com"
 			},
 			{
+				"name": "Espresso",
+				"pattern": "/assets/images/patterns/pattern-suede-espresso.webp",
+				"url": "https://www.lucchese.com"
+			},
+			{
 				"name": "Patent Black",
 				"pattern": "/assets/images/patterns/pattern-patent-black.webp",
 				"url": "https://www.lucchese.com"
@@ -54,11 +59,6 @@
 			{
 				"name": "Red Luster",
 				"pattern": "/assets/images/patterns/pattern-red-luster.webp",
-				"url": "https://www.lucchese.com"
-			},
-			{
-				"name": "Brown Suede",
-				"pattern": "/assets/images/patterns/pattern-brown.webp",
 				"url": "https://www.lucchese.com"
 			},
 			{

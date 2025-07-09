@@ -1,0 +1,7 @@
+<ul class="c-colors-select tw-flex tw-flex-wrap -tw-mt-0.5 tw-ml-0.5">
+    <template x-for="(color, index) in product.colors" :key="index">
+        {% include '../atoms/a_color-item.twig' with {
+            color: color,
+        } %}
+    </template>
+</ul>

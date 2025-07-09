@@ -17,15 +17,19 @@
 // Atoms
 @use './atoms/_button.scss';
 @use './atoms/_icon.scss';
+@use './atoms/_a-color-item.scss';
 
 // Components
 @use './components/_accordion-item.scss';
-@use './components/_product-info.scss';
+@use './components/_product-details.scss';
 
 // Swiper styles
 @use 'swiper/css';
 @use 'swiper/css/navigation';
 @use 'swiper/css/thumbs';
+
+// Plugins
+@use './plugins/Swiper/_swiper-slide.scss';
 
 @tailwind base;
 @tailwind components;

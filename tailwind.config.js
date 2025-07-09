@@ -8,9 +8,24 @@ export default {
 				primary: {
 					DEFAULT: '#0c2852',
 				},
+				neutrals: {
+					40: '#d9d9d9',
+					80: '#4d4d4d',
+				},
 			},
 			spacing: {
 				'left-full': '-100%',
+			},
+			fontSize: {
+				'heading-28': ['28px', '34px'],
+				md: ['14px', '24px'],
+			},
+			lineHeight: {
+				md: '18px',
+				lg: '20px',
+			},
+			letterSpacing: {
+				light: '0.311px',
 			},
 		},
 	},
