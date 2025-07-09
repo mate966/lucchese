@@ -1,0 +1,23 @@
+<div class="c-product-details__sizes-wrapper" x-show="selectedSize">
+    <div class="c-product-details__sizes-selected">
+        Selected:
+    </div>
+    
+    {% include '../atoms/a_selected-size.twig' with {
+        type: 'size',
+        title: 'Size',
+        value: 'size'
+    } %}
+    
+    {% include '../atoms/a_selected-size.twig' with {
+        type: 'width',
+        title: 'Width',
+        value: 'widths'
+    } %}
+    
+    {% include '../atoms/a_selected-size.twig' with {
+        type: 'toe-heel',
+        title: 'Toe Heel',
+        value: 'toeHeels'
+    } %}
+</div>

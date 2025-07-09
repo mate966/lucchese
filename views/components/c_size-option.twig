@@ -1,0 +1,17 @@
+<div class="tw-mt-4" x-show="getOptionsByType('{{ type }}').length > 0">
+    <span class="tw-block tw-mb-2 tw-font-semibold">{{ title }}</span>
+    <div class="tw-flex tw-flex-wrap tw-gap-2">
+        <template x-for="item in getOptionsByType('{{ type }}')" :key="item">
+            <button
+                @click="selectSizeOption('{{ type }}', item)"
+                :class="getButtonClasses('{{ type }}', item)"
+                class="c-product-details__size-option tw-px-4 tw-py-2 tw-border tw-border-gray-300 tw-rounded tw-transition-colors"
+                x-text="item"
+            ></button>
+        </template>
+    </div>
+</div>
+<div class="tw-mt-4" x-show="getOptionsByType('{{ type }}').length === 0">
+    <span class="tw-block tw-mb-2 tw-font-semibold">{{ title }}</span>
+    <span class="tw-text-neutrals-60">No options available</span>
+</div> 

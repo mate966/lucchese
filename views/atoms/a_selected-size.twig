@@ -1,0 +1,4 @@
+<div class="c-product-details__sizes-{{ type }}">
+    {{ title }}:
+    <span x-text="Array.isArray(selectedSize.{{ value }}) ? selectedSize.{{ value }}.join(', ') : selectedSize.{{ value }}"></span>
+</div> 

@@ -18,6 +18,7 @@ export default {
 			},
 			fontSize: {
 				'heading-28': ['28px', '34px'],
+				lg: ['18px', '25px'],
 				md: ['14px', '24px'],
 			},
 			lineHeight: {
@@ -26,6 +27,10 @@ export default {
 			},
 			letterSpacing: {
 				light: '0.311px',
+			},
+			fontFamily: {
+				sans: ['FuturaPT', 'Arial', 'sans-serif'],
+				futura: ['FuturaPT', 'Arial', 'sans-serif'],
 			},
 		},
 	},

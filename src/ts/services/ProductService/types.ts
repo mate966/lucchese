@@ -10,8 +10,8 @@ export interface Product {
 		url?: string;
 	}[];
 	sizes: number[];
-	width: string;
-	toeHeel: string;
+	toeHeels: string[];
+	widths: string[];
 }
 
 export interface ApiResponse<T> {

@@ -26,8 +26,8 @@ router.get('/', (req, res) => {
 			color: product.color,
 			colors: product.colors,
 			sizes: product.sizes,
-			width: product.width,
-			ToeHeel: product.ToeHeel,
+			widths: product.widths,
+			toeHeels: product.toeHeels,
 		})),
 	});
 });

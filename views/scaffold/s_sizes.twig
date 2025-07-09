@@ -1,0 +1,36 @@
+{# <div :class="sizesOpen && 'tw-left-0'" class="tw-fixed tw-top-50 -tw-left-full tw-w-full tw-h-full tw-bg-primary tw-duration-500 tw-z-10"> #}
+<div x-data="sizes()">  
+    {% set sizeOptions = [
+        {
+            type: 'size',
+            title: 'Size',
+            data: 'product.sizes',
+            selected: 'selectedSize?.size',
+            updateKey: 'size'
+        },
+        {
+            type: 'width',
+            title: 'Width',
+            data: 'product.widths',
+            selected: 'selectedSize?.widths',
+            updateKey: 'widths'
+        },
+        {
+            type: 'toeHeel',
+            title: 'Toe + Heel',
+            data: 'product.toeHeels',
+            selected: 'selectedSize?.toeHeels',
+            updateKey: 'toeHeels'
+        }
+    ] %}
+
+    {% for option in sizeOptions %}
+        {% include '../components/c_size-option.twig' with {
+            type: option.type,
+            title: option.title,
+            data: option.data,
+            selected: option.selected,
+            updateKey: option.updateKey
+        } %}
+    {% endfor %}
+</div>
