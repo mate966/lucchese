@@ -16,21 +16,17 @@ const PORT = 8000;
 const isDev = process.env.NODE_ENV !== 'production';
 
 process.on('uncaughtException', (err) => {
-	if (err.message && err.message.includes('ENOENT')) {
+	if (err.message?.includes('ENOENT')) {
 		console.error('Twig file not found:', err.message);
 	} else {
 		console.error('Uncaught Exception:', err.message);
 	}
-	if (isDev) {
-		process.exit(1);
-	}
+	if (isDev) process.exit(1);
 });
 
 process.on('unhandledRejection', (reason, promise) => {
 	console.error('Unhandled Rejection at:', promise, 'reason:', reason);
-	if (isDev) {
-		process.exit(1);
-	}
+	if (isDev) process.exit(1);
 });
 
 twig.cache(false);
@@ -46,9 +42,7 @@ if (isDev) {
 		join(__dirname, '..', 'src'),
 		join(__dirname, '..', 'views'),
 	]);
-}
 
-if (isDev) {
 	app.use(connectLivereload());
 
 	app.use((req, res, next) => {
@@ -59,47 +53,35 @@ if (isDev) {
 		next();
 	});
 
-	app.use(
-		['/src', '/@vite', '/@id', '/node_modules'],
-		async (req, res, next) => {
-			let targetUrl;
-			if (req.originalUrl.startsWith('/@vite/')) {
-				targetUrl = `http://localhost:5173${req.originalUrl}`;
-			} else if (req.originalUrl.startsWith('/node_modules/')) {
-				targetUrl = `http://localhost:5173${req.originalUrl}`;
-			} else {
-				targetUrl = `http://localhost:5173/src${req.url}`;
-			}
+	app.use(['/src', '/@vite', '/@id', '/node_modules'], async (req, res) => {
+		const targetUrl = `http://localhost:5173${req.originalUrl}`;
+		const http = await import('http');
+		const url = new URL(targetUrl);
 
-			const http = await import('http');
-			const url = new URL(targetUrl);
+		const options = {
+			hostname: url.hostname,
+			port: url.port,
+			path: url.pathname + url.search,
+			method: req.method,
+			headers: req.headers,
+		};
 
-			const options = {
-				hostname: url.hostname,
-				port: url.port,
-				path: url.pathname + url.search,
-				method: req.method,
-				headers: req.headers,
-			};
+		const proxyReq = http.request(options, (proxyRes) => {
+			res.writeHead(proxyRes.statusCode, proxyRes.headers);
+			proxyRes.pipe(res);
+		});
 
-			const proxyReq = http.request(options, (proxyRes) => {
-				res.writeHead(proxyRes.statusCode, proxyRes.headers);
-				proxyRes.pipe(res);
-			});
+		proxyReq.on('error', (err) => {
+			console.error('Proxy error:', err.message);
+			res.status(500).send('Proxy error: ' + err.message);
+		});
 
-			proxyReq.on('error', (err) => {
-				res.status(500).send('Proxy error: ' + err.message);
-			});
-
-			req.pipe(proxyReq);
-		}
-	);
+		req.pipe(proxyReq);
+	});
 }
 
 app.use(express.static(join(__dirname, '..', 'public')));
-
 app.use('/assets', express.static(join(__dirname, '..', 'src', 'assets')));
-
 app.use('/api', apiRouter);
 
 if (!isDev) {
@@ -108,13 +90,6 @@ if (!isDev) {
 }
 
 app.get('/', (req, res) => {
-	if (!isDev) {
-		const indexPath = join(__dirname, '..', 'dist', 'index.html');
-		if (fs.existsSync(indexPath)) {
-			return res.sendFile(indexPath);
-		}
-	}
-
 	try {
 		const pageData = JSON.parse(
 			fs.readFileSync(
@@ -141,48 +116,22 @@ app.get('/', (req, res) => {
 			return res.status(500).send('Main template not found');
 		}
 
-		const renderTemplate = () => {
-			return new Promise((resolve, reject) => {
-				twig.renderFile(mainTemplate, templateData, (err, html) => {
-					if (err) {
-						reject(err);
-					} else {
-						resolve(html);
-					}
-				});
-			});
-		};
-
-		renderTemplate()
-			.then((html) => {
-				res.send(html);
-			})
-			.catch((err) => {
+		twig.renderFile(mainTemplate, templateData, (err, html) => {
+			if (err) {
 				console.error('Twig rendering error:', err.message);
-				res.status(500).send(`Błąd renderowania: ${err.message}`);
-			});
+				return res
+					.status(500)
+					.send(`Błąd renderowania: ${err.message}`);
+			}
+			res.send(html);
+		});
 	} catch (error) {
 		console.error('Error loading page data:', error);
 		res.status(500).send('Server error');
 	}
 });
 
-if (!isDev) {
-	app.get('*', (req, res) => {
-		if (req.path.startsWith('/api/')) {
-			return res.status(404).send('API endpoint not found');
-		}
-
-		const indexPath = join(__dirname, '..', 'dist', 'index.html');
-		if (fs.existsSync(indexPath)) {
-			res.sendFile(indexPath);
-		} else {
-			res.status(404).send('Page not found');
-		}
-	});
-}
-
-if (process.env.NODE_ENV !== 'production') {
+if (isDev) {
 	app.listen(PORT, () => {
 		console.log(`Server running on http://localhost:${PORT}`);
 	});
