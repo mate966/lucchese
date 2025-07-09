@@ -96,6 +96,7 @@ app.use('/api', apiRouter);
 
 if (!isDev) {
 	app.use('/src', express.static(join(__dirname, '..', 'src')));
+	app.use(express.static(join(__dirname, '..', 'dist')));
 }
 
 app.get('/', (req, res) => {
@@ -149,6 +150,21 @@ app.get('/', (req, res) => {
 		res.status(500).send('Server error');
 	}
 });
+
+if (!isDev) {
+	app.get('*', (req, res) => {
+		if (req.path.startsWith('/api/')) {
+			return res.status(404).send('API endpoint not found');
+		}
+
+		const indexPath = join(__dirname, '..', 'dist', 'index.html');
+		if (fs.existsSync(indexPath)) {
+			res.sendFile(indexPath);
+		} else {
+			res.status(404).send('Page not found');
+		}
+	});
+}
 
 if (process.env.NODE_ENV !== 'production') {
 	app.listen(PORT, () => {
