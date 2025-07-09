@@ -21,24 +21,32 @@ process.on('uncaughtException', (err) => {
 	} else {
 		console.error('Uncaught Exception:', err.message);
 	}
+	if (isDev) {
+		process.exit(1);
+	}
 });
 
 process.on('unhandledRejection', (reason, promise) => {
 	console.error('Unhandled Rejection at:', promise, 'reason:', reason);
+	if (isDev) {
+		process.exit(1);
+	}
 });
 
 twig.cache(false);
 
-const liveReloadServer = livereload.createServer({
-	exts: ['html', 'css', 'js', 'ts', 'twig', 'json'],
-	delay: 100,
-	excludeList: ['.git', 'node_modules'],
-});
-liveReloadServer.watch([
-	join(__dirname, '..', 'public'),
-	join(__dirname, '..', 'src'),
-	join(__dirname, '..', 'views'),
-]);
+if (isDev) {
+	const liveReloadServer = livereload.createServer({
+		exts: ['html', 'css', 'js', 'ts', 'twig', 'json'],
+		delay: 100,
+		excludeList: ['.git', 'node_modules'],
+	});
+	liveReloadServer.watch([
+		join(__dirname, '..', 'public'),
+		join(__dirname, '..', 'src'),
+		join(__dirname, '..', 'views'),
+	]);
+}
 
 if (isDev) {
 	app.use(connectLivereload());
@@ -100,6 +108,13 @@ if (!isDev) {
 }
 
 app.get('/', (req, res) => {
+	if (!isDev) {
+		const indexPath = join(__dirname, '..', 'dist', 'index.html');
+		if (fs.existsSync(indexPath)) {
+			return res.sendFile(indexPath);
+		}
+	}
+
 	try {
 		const pageData = JSON.parse(
 			fs.readFileSync(
@@ -147,6 +162,7 @@ app.get('/', (req, res) => {
 				res.status(500).send(`Błąd renderowania: ${err.message}`);
 			});
 	} catch (error) {
+		console.error('Error loading page data:', error);
 		res.status(500).send('Server error');
 	}
 });
