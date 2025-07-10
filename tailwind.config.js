@@ -7,6 +7,7 @@ export default {
 			colors: {
 				primary: {
 					DEFAULT: '#0c2852',
+					light: '#002855',
 				},
 				neutrals: {
 					10: '#fafafa',
@@ -19,6 +20,7 @@ export default {
 			},
 			fontSize: {
 				'heading-28': ['28px', '34px'],
+				xl: ['20px', '24px'],
 				lg: ['18px', '25px'],
 				md: ['14px', '24px'],
 				sm: ['12px', '16px'],
@@ -26,6 +28,7 @@ export default {
 			lineHeight: {
 				md: '18px',
 				lg: '20px',
+				xl: '24px',
 			},
 			letterSpacing: {
 				light: '0.311px',

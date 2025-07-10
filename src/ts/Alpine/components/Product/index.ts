@@ -124,33 +124,6 @@ export class ProductComponent implements ProductState {
 		this.selectSize(newSelectedSize);
 	}
 
-	getButtonClasses(type: string, item: number | string): string {
-		if (!this.selectedSize) {
-			return 'tw-bg-gray-100 tw-text-black hover:tw-bg-gray-200';
-		}
-
-		let isSelected = false;
-
-		switch (type) {
-			case 'size':
-				isSelected = this.selectedSize.size === item;
-				break;
-			case 'width':
-				isSelected =
-					this.selectedSize.widths?.includes(item as string) || false;
-				break;
-			case 'toeHeel':
-				isSelected =
-					this.selectedSize.toeHeels?.includes(item as string) ||
-					false;
-				break;
-		}
-
-		return isSelected
-			? 'tw-bg-black tw-text-white'
-			: 'tw-bg-gray-100 tw-text-black hover:tw-bg-gray-200';
-	}
-
 	goToImage(index: number): void {
 		if (
 			!this.product ||

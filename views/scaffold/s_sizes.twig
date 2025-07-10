@@ -1,74 +1,85 @@
 <div 
     x-show="isOpen"
     :class="isOpen ? 'tw-right-0 tw-transition-all tw-duration-500' : ''"
-    class="tw-fixed tw-top-0 tw-right-100 tw-w-full tw-h-full tw-bg-white tw-z-50 tw-shadow-2xl tw-transform tw-duration-500"
+    class="tw-fixed tw-top-0 tw-right-100 tw-w-full tw-h-full tw-bg-white tw-z-50 tw-shadow-2xl tw-transform tw-duration-500 tw-pt-[19px] tw-px-4 tw-pb-[142px]"
     style="max-width: 400px;"
 >
-    <!-- Content -->
-    <div class="tw-p-6 tw-overflow-y-auto tw-h-full">
-        {% set sizeOptions = [
-            {
-                type: 'size',
-                title: 'Size',
-                data: 'product.sizes',
-                selected: 'selectedSize?.size',
-                updateKey: 'size'
-            },
-            {
-                type: 'width',
-                title: 'Width',
-                data: 'product.widths',
-                selected: 'selectedSize?.widths',
-                updateKey: 'widths'
-            },
-            {
-                type: 'toeHeel',
-                title: 'Toe + Heel',
-                data: 'product.toeHeels',
-                selected: 'selectedSize?.toeHeels',
-                updateKey: 'toeHeels'
-            }
-        ] %}
+    <div class="sizes__header tw-flex tw-justify-between tw-items-center tw-pb-1.5 tw-border-b tw-border-solid tw-border-neutrals-40">
+        <h3 class="tw-uppercase tw-font-light tw-text-xl tw-tracking-wide tw-leading-xl tw-text-black">Choose size</h3>
+        
+        <div class="sizes__close tw-w-12 tw-h-12 tw-center">
+            {% include '../atoms/a_button.twig' with {
+                icons: ['i_close'],
+                classes: ['tw-text-primary tw-uppercase tw-font-light tw-text-md tw-leading-md tw-tracking-wide'],
+                onclick: 'close()'
+            } %}
+        </div>
+    </div>
 
-        <!-- Size options -->
+    <div class="">
         <div class="tw-mt-4" x-show="product && product.sizes && product.sizes.length > 0">
-            <span class="tw-block tw-mb-2 tw-font-semibold">Size</span>
+            <div class="tw-flex tw-items-center tw-gap-2">
+                <span class="tw-block tw-mb-2">Size:</span>
+                <span class="tw-block tw-mb-2 tw-text-primary-light">
+                    {% include '../icons/i_info.twig' %}
+                </span>
+            </div>
+            <div class="tw-center tw-text-primary tw-w-full tw-h-10 tw-my-2 tw-bg-neutrals-10">
+                <span class="tw-block">
+                    {% include '../icons/i_arrows.twig' %}
+                </span>
+                <span class="tw-block tw-ml-2">
+                    Order a half size up for a wider fit
+                </span>
+
+            </div>
             <div class="tw-flex tw-flex-wrap tw-gap-2">
                 <template x-for="size in product.sizes" :key="size">
                     <button
                         @click="selectSizeOption('size', size)"
-                        :class="getButtonClasses('size', size)"
-                        class="c-product-details__size-option tw-px-4 tw-py-2 tw-border tw-border-gray-300 tw-rounded tw-transition-colors"
+                        :class="selectedSize?.size === size 
+                                ? 'c-product-details__size-option tw-px-4 tw-py-2 tw-text-black tw-border-2 tw-border-solid tw-border-primary-light tw-w-[59px] tw-h-[56px] tw-font-bold' 
+                                : 'c-product-details__size-option tw-px-4 tw-py-2 tw-border tw-border-solid tw-border-black tw-text-black tw-w-[59px] tw-h-[56px]'"
                         x-text="size"
                     ></button>
                 </template>
             </div>
         </div>
 
-        <!-- Width options -->
         <div class="tw-mt-4" x-show="product && product.widths && product.widths.length > 0">
-            <span class="tw-block tw-mb-2 tw-font-semibold">Width</span>
+            <div class="tw-flex tw-items-center tw-gap-2">
+                <span class="tw-block tw-mb-2">Width:</span>
+                <span class="tw-block tw-mb-2 tw-text-primary-light">
+                    {% include '../icons/i_info.twig' %}
+                </span>
+            </div>
             <div class="tw-flex tw-flex-wrap tw-gap-2">
                 <template x-for="width in product.widths" :key="width">
                     <button
                         @click="selectSizeOption('width', width)"
-                        :class="getButtonClasses('width', width)"
-                        class="c-product-details__size-option tw-px-4 tw-py-2 tw-border tw-border-gray-300 tw-rounded tw-transition-colors"
+                        :class="selectedSize?.widths && selectedSize.widths.includes(width)
+                                ? 'c-product-details__size-option tw-text-black tw-px-4 tw-py-2 tw-border-2 tw-border-solid tw-border-primary-light tw-min-w-[59px] tw-h-[56px] tw-font-bold' 
+                                : 'c-product-details__size-option tw-px-4 tw-py-2 tw-border tw-border-solid tw-border-black tw-text-black tw-min-w-[59px] tw-h-[56px]'"
                         x-text="width"
                     ></button>
                 </template>
             </div>
         </div>
 
-        <!-- Toe + Heel options -->
         <div class="tw-mt-4" x-show="product && product.toeHeels && product.toeHeels.length > 0">
-            <span class="tw-block tw-mb-2 tw-font-semibold">Toe + Heel</span>
+            <div class="tw-flex tw-items-center tw-gap-2">
+                <span class="tw-block tw-mb-2">Toe + Heel:</span>
+                <span class="tw-block tw-mb-2 tw-text-primary-light">
+                    {% include '../icons/i_info.twig' %}
+                </span>
+            </div>
             <div class="tw-flex tw-flex-wrap tw-gap-2">
                 <template x-for="toeHeel in product.toeHeels" :key="toeHeel">
                     <button
                         @click="selectSizeOption('toeHeel', toeHeel)"
-                        :class="getButtonClasses('toeHeel', toeHeel)"
-                        class="c-product-details__size-option tw-px-4 tw-py-2 tw-border tw-border-gray-300 tw-rounded tw-transition-colors"
+                        :class="selectedSize?.toeHeels && selectedSize.toeHeels.includes(toeHeel)
+                            ? 'c-product-details__size-option tw-px-4 tw-py-2 tw-border-2 tw-border-solid tw-border-primary-light tw-text-black tw-min-w-[59px] tw-h-[56px] tw-font-bold' 
+                            : 'c-product-details__size-option tw-px-4 tw-py-2 tw-border tw-border-solid tw-border-black tw-text-black tw-min-w-[59px] tw-h-[56px]'"
                         x-text="toeHeel"
                     ></button>
                 </template>
