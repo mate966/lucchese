@@ -35,36 +35,35 @@
                                 <div class="tw-text-neutrals-80 tw-leading-lg">
                                     <p><span x-text="`$${product.price}`"></span></p>
                                 </div>
-                                
-                                <div class="c-recommendations__product-colors tw-absolute tw-top-0 tw-left-0 tw-flex tw-gap-2 tw-justify-center tw-flex-wrap tw-px-5 tw-translate-y-[-50%]">
-                                    <template x-for="(color, index) in isExpanded(product.id) ? product.colors : product.colors.slice(0, 4)" :key="color.name">
-                                        <button
-                                            @click="selectColor(product.id, color.name)"
-                                            :class="{
-                                                'tw-border-2 tw-border-black tw-scale-110': getSelectedColor(product.id) === color.name,
-                                                'tw-border-2 tw-border-gray-300 hover:tw-border-gray-400': getSelectedColor(product.id) !== color.name
-                                            }"
-                                            class="c-recommendations__color-option tw-w-8 tw-h-8 tw-rounded-full tw-cursor-pointer tw-transition-all tw-duration-200"
-                                            :title="color.name"
-                                        >
-                                            <img 
-                                                :src="color.pattern" 
-                                                :alt="color.name"
-                                                class="tw-w-full tw-h-full tw-rounded-full tw-object-cover"
-                                            />
-                                        </button>
-                                    </template>
-                                    
-                                    <a 
-                                        x-show="product.colors.length > 4"
-                                        :href="`https://www.lucchesse.com/`"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        class="c-recommendations__color-option c-recommendations__color-more tw-w-8 tw-h-8 tw-rounded-full tw-border-2 tw-border-gray-300 tw-bg-gray-100 tw-flex tw-items-center tw-justify-center tw-text-xs tw-font-semibold tw-text-gray-600 tw-cursor-pointer hover:tw-border-gray-400 hover:tw-bg-gray-200 tw-transition-all tw-duration-200"
-                                        :title="`${product.colors.length - 4} more colors on lucchese.com`"
-                                    >
-                                        <span x-text="`+${product.colors.length - 4}`"></span>
-                                    </a>
+                                {# TODO: refactor, make it a component #}
+                                <div class="c-recommendations__product-colors tw-absolute tw-top-0 tw-left-0 tw-px-5 tw-translate-y-[-50%]">
+                                    <ul class="c-colors-select tw-flex tw-flex-wrap -tw-mt-0.5 tw-ml-0.5">
+                                        <template x-for="(color, index) in isExpanded(product.id) ? product.colors : product.colors.slice(0, 4)" :key="color.name">
+                                            <li 
+                                                @click="selectColor(product.id, color.name)"
+                                                class="a-color-item tw-relative tw-w-12 tw-h-12 tw-mr-2 tw-cursor-pointer" 
+                                                :class="{ 'is-active': getSelectedColor(product.id) === color.name }"
+                                            >
+                                                <div :class="{ 'tw-w-[42px] tw-h-[42px]': getSelectedColor(product.id) === color.name }" class="a-color-item__image tw-w-11 tw-h-11">
+                                                    <div class="a-color-item__image-inner tw-w-full tw-h-full tw-rounded-full tw-overflow-hidden">
+                                                        <img :src="color.pattern" :alt="color.name" class="tw-w-full tw-h-full tw-object-cover">
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </template>
+                                        
+                                        <li x-show="product.colors.length > 4" class="a-color-item tw-relative tw-w-12 tw-h-12">
+                                            <a 
+                                                :href="`https://www.lucchesse.com/`"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                class="tw-absolute tw-inset-0 tw-cursor-pointer tw-flex tw-items-center tw-justify-center tw-bg-gray-100 tw-rounded-full tw-text-xs tw-font-semibold tw-text-gray-600 hover:tw-bg-gray-200 tw-transition-all tw-duration-200"
+                                                :title="`${product.colors.length - 4} more colors on lucchese.com`"
+                                            >
+                                                <span x-text="`+${product.colors.length - 4}`"></span>
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
