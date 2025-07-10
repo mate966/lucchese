@@ -157,6 +157,11 @@ export class ProductComponent implements ProductState {
 	isAddToCartButtonVisible = true;
 
 	checkAddToCartButtonVisibility(): void {
+		if (window.innerWidth > 768) {
+			this.isAddToCartButtonVisible = true;
+			return;
+		}
+
 		const btn = document.querySelector(
 			'[x-ref="addToCartBtn"]'
 		) as HTMLElement;
@@ -173,6 +178,10 @@ export class ProductComponent implements ProductState {
 
 	initAddToCartButtonVisibility(): void {
 		setTimeout(() => {
+			if (window.innerWidth > 768) {
+				this.isAddToCartButtonVisible = true;
+				return;
+			}
 			this.checkAddToCartButtonVisibility();
 			window.addEventListener('scroll', () =>
 				this.checkAddToCartButtonVisibility()

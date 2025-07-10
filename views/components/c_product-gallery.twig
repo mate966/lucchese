@@ -15,7 +15,7 @@
                 classes: ['tw-absolute tw-z-10 tw-top-2 tw-right-2 tw-w-12 tw-h-12 tw-center']
             } %}
 
-            <div class="swiper-wrapper">
+            <div class="swiper-wrapper md:tw-block">
                 <template x-for="(image, index) in product.gallery" :key="index">
                     <div class="swiper-slide">
                         <img :src="image" :alt="product.title" class="tw-w-full tw-h-auto tw-object-cover">
@@ -24,7 +24,7 @@
             </div>
         </div>
 
-        <div class="swiper product-thumbs tw-mt-[1px]">
+        <div class="swiper product-thumbs tw-mt-[1px] tw-block md:tw-hidden">
             <div class="swiper-wrapper">
                 <template x-for="(image, index) in product.gallery" :key="index">
                     <div class="swiper-slide tw-cursor-pointer" @click="goToImage(index)">
