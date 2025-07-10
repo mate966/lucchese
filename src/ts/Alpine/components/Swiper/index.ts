@@ -40,7 +40,7 @@ export class SwiperComponent implements SwiperState {
 		} else {
 			this.mainSwiper = new Swiper(mainSelector, {
 				modules: [Navigation, Pagination],
-				spaceBetween: 20,
+				spaceBetween: 1,
 				slidesPerView: 1,
 				navigation: {
 					nextEl: '.swiper-button-next',

@@ -1,9 +1,9 @@
 <div class="c-recommendations" x-data="recommendations()" x-init="loadRecommendations()">
     <div class="c-recommendations__header tw-py-[10px] tw-px-[45px] tw-mb-6">
-        <h2 class="tw-text-heading-28 tw-font-light tw-text-primary tw-uppercase">You may be interested in</h2>
+        <h2 class="tw-text-heading-28 tw-font-light tw-text-center tw-text-primary tw-uppercase">You may be interested in</h2>
     </div>
 
-    <div class="c-recommendations__image tw-mx-0.5 tw-mb-1">
+    <div class="c-recommendations__image tw-mx-0.5 tw-mb-1.5">
         {% include '../atoms/a_picture.twig' with image %}
     </div>
 
@@ -21,20 +21,22 @@
                 <template x-for="product in recommendations" :key="product.id">
                     <div class="swiper-slide">
                         <div class="c-recommendations__product">
-                            <div class="c-recommendations__product-image tw-mb-4">
+                            <div class="c-recommendations__product-image">
                                 <img 
                                     :src="getSelectedColorImage(product.id)" 
                                     :alt="product.title"
-                                    class="tw-w-full tw-h-64 tw-object-cover tw-rounded tw-transition-all tw-duration-300"
+                                    class="tw-w-full tw-object-cover"
                                     loading="lazy"
                                 />
                             </div>
                             
-                            <div class="c-recommendations__product-info">
-                                <h3 class="c-recommendations__product-title tw-text-lg tw-font-semibold tw-mb-2" x-text="product.title"></h3>
-                                <p class="c-recommendations__product-price tw-text-xl tw-font-bold tw-mb-3" x-text="`$${product.price}`"></p>
+                            <div class="c-recommendations__product-info tw-relative tw-px-5 tw-py-6">
+                                <h3 class="c-recommendations__product-title tw-text-primary tw-tracking-[0.32px] tw-uppercase tw-py-2" x-text="product.title"></h3>
+                                <div class="tw-text-neutrals-80 tw-leading-lg">
+                                    <p><span x-text="`$${product.price}`"></span></p>
+                                </div>
                                 
-                                <div class="c-recommendations__product-colors tw-flex tw-gap-2 tw-mb-4 tw-justify-center tw-flex-wrap">
+                                <div class="c-recommendations__product-colors tw-absolute tw-top-0 tw-left-0 tw-flex tw-gap-2 tw-justify-center tw-flex-wrap tw-px-5 tw-translate-y-[-50%]">
                                     <template x-for="(color, index) in isExpanded(product.id) ? product.colors : product.colors.slice(0, 4)" :key="color.name">
                                         <button
                                             @click="selectColor(product.id, color.name)"
