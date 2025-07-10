@@ -86,10 +86,13 @@ app.use('/api', apiRouter);
 
 if (!isDev) {
 	app.use('/src', express.static(join(__dirname, '..', 'src')));
-	app.use('/css', express.static(join(__dirname, '..', 'dist', 'css')));
-	app.use('/js', express.static(join(__dirname, '..', 'dist', 'js')));
-	app.use('/assets', express.static(join(__dirname, '..', 'dist', 'assets')));
-	app.use(express.static(join(__dirname, '..', 'dist')));
+	app.use('/css', express.static(join(__dirname, '..', 'public', 'css')));
+	app.use('/js', express.static(join(__dirname, '..', 'public', 'js')));
+	app.use(
+		'/assets',
+		express.static(join(__dirname, '..', 'public', 'assets'))
+	);
+	app.use(express.static(join(__dirname, '..', 'public')));
 }
 
 app.get('/', (req, res) => {
