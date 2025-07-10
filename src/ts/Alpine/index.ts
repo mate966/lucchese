@@ -1,9 +1,7 @@
 import Alpine from 'alpinejs';
 import type { AlpineComponent } from './types';
 
-import { accordionComponent } from './components/Toggle/Components/AccordionComponent';
-import { buttonComponent } from './components/Toggle/Components/ButtonComponent';
-import { sizesComponent } from './components/Toggle/Components/SizesComponent';
+import { toggleComponent } from './components/Toggle';
 import { productComponent } from './components/Product';
 import { recommendationsComponent } from './components/Recommendations';
 
@@ -24,9 +22,9 @@ export class AlpineManager {
 	}
 
 	private registerDefaultComponents(): void {
-		this.registerComponent('toggle', buttonComponent);
-		this.registerComponent('accordion', accordionComponent);
-		this.registerComponent('sizes', sizesComponent);
+		this.registerComponent('toggle', toggleComponent);
+		this.registerComponent('accordion', toggleComponent);
+		this.registerComponent('sizes', toggleComponent);
 		this.registerComponent('product', productComponent);
 		this.registerComponent('recommendations', recommendationsComponent);
 	}

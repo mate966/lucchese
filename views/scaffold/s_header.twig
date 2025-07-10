@@ -3,11 +3,11 @@
         {% include '../atoms/a_button.twig' with {
             icons: ['i_hamburger', 'i_close'],
             classes: ['tw-center', 'tw-bg-transparent', 'tw-border-none', 'tw-w-full', 'tw-h-full'],
-            ariaLabel: 'menuOpen ? `close main menu` : `open main menu`',
-            ariaExpanded: 'menuOpen',
+            ariaLabel: 'isOpen ? `close main menu` : `open main menu`',
+            ariaExpanded: 'isOpen',
             tabindex: '0',
             onclick: 'toggle()',
-            xShow: 'menuOpen',
+            xShow: 'isOpen',
         } %}
     </div>
     <a href="https://www.lucchese.com" class="tw-absolute tw-left-1/2 -tw-translate-x-1/2 tw-top-1/2 -tw-translate-y-1/2">

@@ -20,8 +20,6 @@ export interface ProductState {
 	goToImage(_index: number): void;
 	addToCart(): void;
 
-	hasOptions(): boolean;
-	getOptions(): (number | string)[];
 	getOptionsByType(_type: string): (number | string)[];
 	selectSizeOption(_type: string, _item: number | string): void;
 
@@ -29,4 +27,12 @@ export interface ProductState {
 	isAddToCartButtonVisible: boolean;
 	checkAddToCartButtonVisibility(): void;
 	initAddToCartButtonVisibility(): void;
+
+	// Gallery logic
+	isGalleryExpanded: boolean;
+	expandGallery(): void;
+	collapseGallery(): void;
+	getVisibleGalleryImages(): string[];
+	hasMoreImages(): boolean;
+	getHiddenImagesCount(): number;
 }

@@ -1,6 +1,12 @@
 import type { ProductState } from './types';
 import { productService } from '../../../services/ProductService/index';
 import { SwiperComponent } from '../Swiper';
+import {
+	GalleryManager,
+	SizeManager,
+	ButtonManager,
+	CartManager,
+} from './managers';
 
 export class ProductComponent implements ProductState {
 	product: ProductState['product'] = null;
@@ -10,8 +16,17 @@ export class ProductComponent implements ProductState {
 	currentImageIndex = 0;
 	private swiper: SwiperComponent;
 
+	private galleryManager: GalleryManager;
+	private sizeManager: SizeManager;
+	private buttonManager: ButtonManager;
+	private cartManager: CartManager;
+
 	constructor() {
 		this.swiper = new SwiperComponent();
+		this.galleryManager = new GalleryManager();
+		this.sizeManager = new SizeManager();
+		this.buttonManager = new ButtonManager();
+		this.cartManager = new CartManager();
 	}
 
 	async loadProduct(id: string): Promise<void> {
@@ -35,7 +50,14 @@ export class ProductComponent implements ProductState {
 					widths: [firstWidth],
 					toeHeels: [firstToeHeel],
 				};
+
+				this.sizeManager.setAvailableSizes(
+					this.product.sizes.map((s) => s.toString())
+				);
+				this.sizeManager.selectSize(firstSize.toString());
 			}
+
+			this.updateButtonVisibility();
 
 			setTimeout(() => {
 				this.initSwiper();
@@ -64,25 +86,8 @@ export class ProductComponent implements ProductState {
 		toeHeels: string[];
 	}): void {
 		this.selectedSize = size;
-	}
-
-	hasOptions(): boolean {
-		return !!(
-			this.product &&
-			this.product.sizes &&
-			this.product.sizes.length > 0
-		);
-	}
-
-	getOptions(): (number | string)[] {
-		if (!this.product) {
-			return [];
-		}
-		return [
-			...this.product.sizes,
-			...this.product.widths,
-			...this.product.toeHeels,
-		];
+		this.sizeManager.selectSize(size.size.toString());
+		this.updateButtonVisibility();
 	}
 
 	getOptionsByType(type: string): (number | string)[] {
@@ -112,6 +117,7 @@ export class ProductComponent implements ProductState {
 		switch (type) {
 			case 'size':
 				newSelectedSize.size = item as number;
+				this.sizeManager.selectSize(item.toString());
 				break;
 			case 'width':
 				newSelectedSize.widths = [item as string];
@@ -147,49 +153,61 @@ export class ProductComponent implements ProductState {
 			return;
 		}
 
-		alert(
-			`Added ${this.product.title} (Size: ${this.selectedSize.size}${this.selectedSize.widths.join(
-				', '
-			)} ${this.selectedSize.toeHeels.join(', ')}) to cart!`
+		this.cartManager.addToCart(
+			this.product,
+			this.selectedSize.size.toString()
 		);
 	}
 
-	isAddToCartButtonVisible = true;
-
 	checkAddToCartButtonVisibility(): void {
-		if (window.innerWidth > 768) {
-			this.isAddToCartButtonVisible = true;
-			return;
-		}
-
-		const btn = document.querySelector(
-			'[x-ref="addToCartBtn"]'
-		) as HTMLElement;
-		if (!btn) {
-			return;
-		}
-
-		const rect = btn.getBoundingClientRect();
-		this.isAddToCartButtonVisible =
-			rect.top >= 0 &&
-			rect.bottom <=
-				(window.innerHeight || document.documentElement.clientHeight);
+		this.buttonManager.checkAddToCartButtonVisibility();
 	}
 
 	initAddToCartButtonVisibility(): void {
-		setTimeout(() => {
-			if (window.innerWidth > 768) {
-				this.isAddToCartButtonVisible = true;
-				return;
-			}
-			this.checkAddToCartButtonVisibility();
-			window.addEventListener('scroll', () =>
-				this.checkAddToCartButtonVisibility()
-			);
-			window.addEventListener('resize', () =>
-				this.checkAddToCartButtonVisibility()
-			);
-		}, 100);
+		this.buttonManager.initAddToCartButtonVisibility();
+	}
+
+	get isGalleryExpanded(): boolean {
+		return this.galleryManager.isExpanded;
+	}
+
+	expandGallery(): void {
+		this.galleryManager.expand();
+	}
+
+	collapseGallery(): void {
+		this.galleryManager.collapse();
+	}
+
+	getVisibleGalleryImages(): string[] {
+		return this.galleryManager.getVisibleImages(
+			this.product?.gallery || []
+		);
+	}
+
+	hasMoreImages(): boolean {
+		return this.galleryManager.hasMoreImages(this.product?.gallery || []);
+	}
+
+	getHiddenImagesCount(): number {
+		return this.galleryManager.getHiddenCount(this.product?.gallery || []);
+	}
+
+	get isAddToCartButtonVisible(): boolean {
+		return this.buttonManager.isAddToCartButtonVisible;
+	}
+
+	get isSizeSelectorVisible(): boolean {
+		return this.buttonManager.isSizeSelectorVisible();
+	}
+
+	private updateButtonVisibility(): void {
+		const hasSelectedSize = this.sizeManager.hasSelectedSize();
+		const hasAvailableSizes = this.sizeManager.availableSizes.length > 0;
+		this.buttonManager.updateButtonVisibility(
+			hasSelectedSize,
+			hasAvailableSizes
+		);
 	}
 }
 

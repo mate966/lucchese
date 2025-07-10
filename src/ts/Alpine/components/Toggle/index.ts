@@ -1,9 +1,14 @@
 import type { ToggleState } from './types';
 
-export abstract class BaseToggleComponent implements ToggleState {
-	[key: string]: boolean | (() => void) | undefined;
-
-	abstract toggle(): void;
-	abstract close(): void;
-	abstract open(): void;
-}
+export const toggleComponent = (): ToggleState => ({
+	isOpen: false,
+	toggle() {
+		this.isOpen = !this.isOpen;
+	},
+	close() {
+		this.isOpen = false;
+	},
+	open() {
+		this.isOpen = true;
+	},
+});

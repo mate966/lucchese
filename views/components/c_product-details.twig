@@ -1,5 +1,5 @@
 <template x-if="product">
-    <div class="c-product-details tw-px-4 md:tw-sticky md:tw-top-0 md:tw-z-10 md:tw-h-fit md:tw-min-h-0">
+    <div class="c-product-details tw-px-4 lg:tw-sticky lg:tw-top-0 lg:tw-z-10 lg:tw-h-fit lg:tw-min-h-0">
         <div class="c-product-details__top">
             <div class="tw-pt-1.5 tw-text-neutrals-80 tw-leading-lg">
                 <p><span x-text="`$${product.price}`"></span></p>
@@ -50,7 +50,7 @@
             <div x-init="initAddToCartButtonVisibility()"
                  @scroll.window="checkAddToCartButtonVisibility"
                  @resize.window="checkAddToCartButtonVisibility">
-                <div x-ref="addToCartBtn">
+                <div x-ref="addToCartBtn" x-show="selectedSize">
                     {% include '../atoms/a_button.twig' with {
                         xText: "`Add to cart - $${product.price}`",
                         classes: [
@@ -70,7 +70,7 @@
                     } %}
                 </div>
                 <div 
-                    x-show="!isAddToCartButtonVisible"
+                    x-show="!isAddToCartButtonVisible && selectedSize"
                     style="position:fixed; bottom:10px; left:0; right:0; z-index:100;"
                     class="tw-w-full tw-flex tw-justify-center tw-pointer-events-none tw-px-4"
                 >

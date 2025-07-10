@@ -15,16 +15,32 @@
                 classes: ['tw-absolute tw-z-10 tw-top-2 tw-right-2 tw-w-12 tw-h-12 tw-center']
             } %}
 
-            <div class="swiper-wrapper md:tw-block">
+            <div class="swiper-wrapper lg:tw-hidden">
                 <template x-for="(image, index) in product.gallery" :key="index">
                     <div class="swiper-slide">
                         <img :src="image" :alt="product.title" class="tw-w-full tw-h-auto tw-object-cover">
                     </div>
                 </template>
             </div>
+
+            <div class="swiper-wrapper tw-hidden lg:tw-block">
+                <template x-for="(image, index) in getVisibleGalleryImages()" :key="index">
+                    <div class="swiper-slide">
+                        <img :src="image" :alt="product.title" class="tw-w-full tw-h-auto tw-object-cover">
+                    </div>
+                </template>
+            </div>
+
+            <div x-show="hasMoreImages()" class="tw-mt-4 tw-flex tw-justify-center tw-hidden lg:tw-flex">
+                {% include '../atoms/a_button.twig' with {
+                    xText: "isGalleryExpanded ? `Show less media (${getHiddenImagesCount()})` : `Show more media (${getHiddenImagesCount()})`",
+                    classes: ['tw-bg-white', 'tw-border', 'tw-border-primary', 'tw-text-primary', 'tw-px-6', 'tw-py-2', 'tw-rounded', 'tw-cursor-pointer'],
+                    onclick: 'isGalleryExpanded ? collapseGallery() : expandGallery()'
+                } %}
+            </div>
         </div>
 
-        <div class="swiper product-thumbs tw-mt-[1px] tw-block md:tw-hidden">
+        <div class="swiper product-thumbs tw-mt-[1px] tw-block lg:tw-hidden">
             <div class="swiper-wrapper">
                 <template x-for="(image, index) in product.gallery" :key="index">
                     <div class="swiper-slide tw-cursor-pointer" @click="goToImage(index)">

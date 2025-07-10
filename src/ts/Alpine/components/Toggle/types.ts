@@ -4,8 +4,3 @@ export interface ToggleState {
 	close(): void;
 	open(): void;
 }
-
-export interface ToggleConfig {
-	stateName: string;
-	initialState?: boolean;
-}
