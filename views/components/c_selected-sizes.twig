@@ -1,23 +1,24 @@
 <div class="c-product-details__sizes-wrapper" x-show="selectedSize">
-    <div class="c-product-details__sizes-selected">
+    <div class="c-product-details__sizes-selected tw-text-md tw-leading-md tw-text-neutrals-80 tw-mb-2">
         Selected:
     </div>
     
-    {% include '../atoms/a_selected-size.twig' with {
-        type: 'size',
-        title: 'Size',
-        value: 'size'
-    } %}
-    
-    {% include '../atoms/a_selected-size.twig' with {
-        type: 'width',
-        title: 'Width',
-        value: 'widths'
-    } %}
-    
-    {% include '../atoms/a_selected-size.twig' with {
-        type: 'toe-heel',
-        title: 'Toe Heel',
-        value: 'toeHeels'
-    } %}
+    <div class="c-product-details__sizes-selected-value tw-flex tw-justify-between tw-items-center tw-text-lg tw-leading-lg tw-text-primary">
+        {% set selectedSizes = [
+            { type: 'size', title: 'Size', value: 'size' },
+            { type: 'width', title: 'Width', value: 'widths' },
+            { type: 'toe-heel', title: 'Toe + Heel', value: 'toeHeels' }
+        ] %}
+
+        {% for size in selectedSizes %}
+            {% include '../atoms/a_selected-size.twig' with {
+                type: size.type,
+                title: size.title,
+                value: size.value
+            } %}
+            {% if not loop.last %}
+                <span class="tw-block tw-w-px tw-h-4 tw-flex-basis-[1px] tw-bg-neutrals-40"></span>
+            {% endif %}
+        {% endfor %}
+    </div>
 </div>

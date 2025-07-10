@@ -1,36 +1,78 @@
-{# <div :class="sizesOpen && 'tw-left-0'" class="tw-fixed tw-top-50 -tw-left-full tw-w-full tw-h-full tw-bg-primary tw-duration-500 tw-z-10"> #}
-<div x-data="sizes()">  
-    {% set sizeOptions = [
-        {
-            type: 'size',
-            title: 'Size',
-            data: 'product.sizes',
-            selected: 'selectedSize?.size',
-            updateKey: 'size'
-        },
-        {
-            type: 'width',
-            title: 'Width',
-            data: 'product.widths',
-            selected: 'selectedSize?.widths',
-            updateKey: 'widths'
-        },
-        {
-            type: 'toeHeel',
-            title: 'Toe + Heel',
-            data: 'product.toeHeels',
-            selected: 'selectedSize?.toeHeels',
-            updateKey: 'toeHeels'
-        }
-    ] %}
+<div 
+    x-show="isOpen"
+    :class="isOpen ? 'tw-right-0 tw-transition-all tw-duration-500' : ''"
+    class="tw-fixed tw-top-0 tw-right-100 tw-w-full tw-h-full tw-bg-white tw-z-50 tw-shadow-2xl tw-transform tw-duration-500"
+    style="max-width: 400px;"
+>
+    <!-- Content -->
+    <div class="tw-p-6 tw-overflow-y-auto tw-h-full">
+        {% set sizeOptions = [
+            {
+                type: 'size',
+                title: 'Size',
+                data: 'product.sizes',
+                selected: 'selectedSize?.size',
+                updateKey: 'size'
+            },
+            {
+                type: 'width',
+                title: 'Width',
+                data: 'product.widths',
+                selected: 'selectedSize?.widths',
+                updateKey: 'widths'
+            },
+            {
+                type: 'toeHeel',
+                title: 'Toe + Heel',
+                data: 'product.toeHeels',
+                selected: 'selectedSize?.toeHeels',
+                updateKey: 'toeHeels'
+            }
+        ] %}
 
-    {% for option in sizeOptions %}
-        {% include '../components/c_size-option.twig' with {
-            type: option.type,
-            title: option.title,
-            data: option.data,
-            selected: option.selected,
-            updateKey: option.updateKey
-        } %}
-    {% endfor %}
+        <!-- Size options -->
+        <div class="tw-mt-4" x-show="product && product.sizes && product.sizes.length > 0">
+            <span class="tw-block tw-mb-2 tw-font-semibold">Size</span>
+            <div class="tw-flex tw-flex-wrap tw-gap-2">
+                <template x-for="size in product.sizes" :key="size">
+                    <button
+                        @click="selectSizeOption('size', size)"
+                        :class="getButtonClasses('size', size)"
+                        class="c-product-details__size-option tw-px-4 tw-py-2 tw-border tw-border-gray-300 tw-rounded tw-transition-colors"
+                        x-text="size"
+                    ></button>
+                </template>
+            </div>
+        </div>
+
+        <!-- Width options -->
+        <div class="tw-mt-4" x-show="product && product.widths && product.widths.length > 0">
+            <span class="tw-block tw-mb-2 tw-font-semibold">Width</span>
+            <div class="tw-flex tw-flex-wrap tw-gap-2">
+                <template x-for="width in product.widths" :key="width">
+                    <button
+                        @click="selectSizeOption('width', width)"
+                        :class="getButtonClasses('width', width)"
+                        class="c-product-details__size-option tw-px-4 tw-py-2 tw-border tw-border-gray-300 tw-rounded tw-transition-colors"
+                        x-text="width"
+                    ></button>
+                </template>
+            </div>
+        </div>
+
+        <!-- Toe + Heel options -->
+        <div class="tw-mt-4" x-show="product && product.toeHeels && product.toeHeels.length > 0">
+            <span class="tw-block tw-mb-2 tw-font-semibold">Toe + Heel</span>
+            <div class="tw-flex tw-flex-wrap tw-gap-2">
+                <template x-for="toeHeel in product.toeHeels" :key="toeHeel">
+                    <button
+                        @click="selectSizeOption('toeHeel', toeHeel)"
+                        :class="getButtonClasses('toeHeel', toeHeel)"
+                        class="c-product-details__size-option tw-px-4 tw-py-2 tw-border tw-border-gray-300 tw-rounded tw-transition-colors"
+                        x-text="toeHeel"
+                    ></button>
+                </template>
+            </div>
+        </div>
+    </div>
 </div>

@@ -32,27 +32,20 @@
                 } %}
             </div>
 
-            <div class="c-product-details__sizes tw-mb-8">
-                {% include '../components/c_selected-sizes.twig' %}
-                
+            <div class="c-product-details__sizes" x-data="sizes()">
+                <div class="c-product-details__sizes-heading tw-mt-2 tw-bg-neutrals-10 tw-py-2 tw-px-4">
+                    {% include '../components/c_selected-sizes.twig' %}
+                </div>
+
+                {% include '../atoms/a_button.twig' with {
+                    text: 'Choose size',
+                    icons: ['i_arrow'],
+                    classes: ['tw-w-full tw-flex tw-justify-between tw-items-center tw-border tw-border-solid tw-text-primary tw-uppercase tw-p-4 tw-mb-6 tw-text-md tw-font-medium tw-tracking-wide tw-text-primary'],
+                    onclick: 'toggle()'
+                } %}
+
                 {% include '../scaffold/s_sizes.twig' %}
-
-                 {# <button
-        @click="toggle()"
-        x-show="isOpen"
-        class="tw-py-3 tw-text-lg tw-font-futura tw-text-primary tw-underline"
-        tabindex="0"
-    >
-        Choose size
-    </button> #}
             </div>
-
-            {# <button 
-                @click="addToCart()"
-                class="c-product-details__add-to-cart tw-w-full tw-bg-black tw-text-white tw-py-4 tw-px-6 tw-rounded tw-font-semibold hover:tw-bg-gray-800 tw-transition-colors tw-mb-4"
-            >
-                Add to Cart
-            </button> #}
         </div>
 
         <div class="c-product-details__bottom">

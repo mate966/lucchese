@@ -29,6 +29,7 @@ export default {
 			},
 			letterSpacing: {
 				light: '0.311px',
+				wide: '2px',
 			},
 			fontFamily: {
 				sans: ['FuturaPT', 'Arial', 'sans-serif'],
