@@ -153,6 +153,35 @@ export class ProductComponent implements ProductState {
 			)} ${this.selectedSize.toeHeels.join(', ')}) to cart!`
 		);
 	}
+
+	isAddToCartButtonVisible = true;
+
+	checkAddToCartButtonVisibility(): void {
+		const btn = document.querySelector(
+			'[x-ref="addToCartBtn"]'
+		) as HTMLElement;
+		if (!btn) {
+			return;
+		}
+
+		const rect = btn.getBoundingClientRect();
+		this.isAddToCartButtonVisible =
+			rect.top >= 0 &&
+			rect.bottom <=
+				(window.innerHeight || document.documentElement.clientHeight);
+	}
+
+	initAddToCartButtonVisibility(): void {
+		setTimeout(() => {
+			this.checkAddToCartButtonVisibility();
+			window.addEventListener('scroll', () =>
+				this.checkAddToCartButtonVisibility()
+			);
+			window.addEventListener('resize', () =>
+				this.checkAddToCartButtonVisibility()
+			);
+		}, 100);
+	}
 }
 
 export const productComponent = (): ProductState => {

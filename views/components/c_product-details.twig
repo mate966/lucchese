@@ -46,6 +46,55 @@
 
                 {% include '../scaffold/s_sizes.twig' %}
             </div>
+
+            <div x-init="initAddToCartButtonVisibility()"
+                 @scroll.window="checkAddToCartButtonVisibility"
+                 @resize.window="checkAddToCartButtonVisibility">
+                <div x-ref="addToCartBtn">
+                    {% include '../atoms/a_button.twig' with {
+                        xText: "`Add to cart - $${product.price}`",
+                        classes: [
+                            'tw-w-full',
+                            'tw-bg-primary',
+                            'tw-text-md',
+                            'tw-font-normal',
+                            'tw-tracking-wide',
+                            'tw-leading-md',
+                            'tw-uppercase',
+                            'tw-border-0',
+                            'tw-cursor-pointer',
+                            'tw-text-white',
+                            'tw-h-16',
+                        ],
+                        onclick: 'addToCart()'
+                    } %}
+                </div>
+                <div 
+                    x-show="!isAddToCartButtonVisible"
+                    style="position:fixed; bottom:10px; left:0; right:0; z-index:100;"
+                    class="tw-w-full tw-flex tw-justify-center tw-pointer-events-none tw-px-4"
+                >
+                    <div class="tw-w-full tw-pointer-events-auto">
+                        {% include '../atoms/a_button.twig' with {
+                            xText: "`Add to cart - $${product.price}`",
+                            classes: [
+                                'tw-w-full',
+                                'tw-bg-primary',
+                                'tw-text-md',
+                                'tw-font-normal',
+                                'tw-tracking-wide',
+                                'tw-leading-md',
+                                'tw-uppercase',
+                                'tw-border-0',
+                                'tw-cursor-pointer',
+                                'tw-text-white',
+                                'tw-h-16',
+                            ],
+                            onclick: 'addToCart()'
+                        } %}
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="c-product-details__bottom">

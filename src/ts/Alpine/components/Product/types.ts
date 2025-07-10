@@ -24,4 +24,9 @@ export interface ProductState {
 	getOptions(): (number | string)[];
 	getOptionsByType(_type: string): (number | string)[];
 	selectSizeOption(_type: string, _item: number | string): void;
+
+	// Fixed button logic
+	isAddToCartButtonVisible: boolean;
+	checkAddToCartButtonVisibility(): void;
+	initAddToCartButtonVisibility(): void;
 }
