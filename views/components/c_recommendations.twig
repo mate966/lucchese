@@ -1,0 +1,78 @@
+<div class="c-recommendations" x-data="recommendations()" x-init="loadRecommendations()">
+    <div class="c-recommendations__header tw-py-[10px] tw-px-[45px] tw-mb-6">
+        <h2 class="tw-text-heading-28 tw-font-light tw-text-primary tw-uppercase">You may be interested in</h2>
+    </div>
+
+    <div class="c-recommendations__image tw-mx-0.5 tw-mb-1">
+        {% include '../atoms/a_picture.twig' with image %}
+    </div>
+
+    <div x-show="loading" class="c-recommendations__loading tw-text-center tw-py-8">
+        <div class="tw-text-neutrals-60">Loading recommendations...</div>
+    </div>
+
+    <div x-show="error" class="c-recommendations__error tw-text-center tw-py-8">
+        <div class="tw-text-red-600" x-text="error"></div>
+    </div>
+
+    <div x-show="!loading && !error && recommendations.length > 0" class="c-recommendations__slider">
+        <div class="swiper recommendations-swiper">
+            <div class="swiper-wrapper">
+                <template x-for="product in recommendations" :key="product.id">
+                    <div class="swiper-slide">
+                        <div class="c-recommendations__product">
+                            <div class="c-recommendations__product-image tw-mb-4">
+                                <img 
+                                    :src="getSelectedColorImage(product.id)" 
+                                    :alt="product.title"
+                                    class="tw-w-full tw-h-64 tw-object-cover tw-rounded tw-transition-all tw-duration-300"
+                                    loading="lazy"
+                                />
+                            </div>
+                            
+                            <div class="c-recommendations__product-info">
+                                <h3 class="c-recommendations__product-title tw-text-lg tw-font-semibold tw-mb-2" x-text="product.title"></h3>
+                                <p class="c-recommendations__product-price tw-text-xl tw-font-bold tw-mb-3" x-text="`$${product.price}`"></p>
+                                
+                                <div class="c-recommendations__product-colors tw-flex tw-gap-2 tw-mb-4 tw-justify-center tw-flex-wrap">
+                                    <template x-for="(color, index) in isExpanded(product.id) ? product.colors : product.colors.slice(0, 4)" :key="color.name">
+                                        <button
+                                            @click="selectColor(product.id, color.name)"
+                                            :class="{
+                                                'tw-border-2 tw-border-black tw-scale-110': getSelectedColor(product.id) === color.name,
+                                                'tw-border-2 tw-border-gray-300 hover:tw-border-gray-400': getSelectedColor(product.id) !== color.name
+                                            }"
+                                            class="c-recommendations__color-option tw-w-8 tw-h-8 tw-rounded-full tw-cursor-pointer tw-transition-all tw-duration-200"
+                                            :title="color.name"
+                                        >
+                                            <img 
+                                                :src="color.pattern" 
+                                                :alt="color.name"
+                                                class="tw-w-full tw-h-full tw-rounded-full tw-object-cover"
+                                            />
+                                        </button>
+                                    </template>
+                                    
+                                    <a 
+                                        x-show="product.colors.length > 4"
+                                        :href="`https://www.lucchesse.com/`"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        class="c-recommendations__color-option c-recommendations__color-more tw-w-8 tw-h-8 tw-rounded-full tw-border-2 tw-border-gray-300 tw-bg-gray-100 tw-flex tw-items-center tw-justify-center tw-text-xs tw-font-semibold tw-text-gray-600 tw-cursor-pointer hover:tw-border-gray-400 hover:tw-bg-gray-200 tw-transition-all tw-duration-200"
+                                        :title="`${product.colors.length - 4} more colors on lucchese.com`"
+                                    >
+                                        <span x-text="`+${product.colors.length - 4}`"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </div>
+
+    <div x-show="!loading && !error && recommendations.length === 0" class="c-recommendations__empty tw-text-center tw-py-8">
+        <div class="tw-text-neutrals-60">No recommendations available</div>
+    </div>
+</div> 

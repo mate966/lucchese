@@ -1,0 +1,147 @@
+[
+	{
+		"id": "GY4579.S54-2019-B-6",
+		"title": "Priscilla Suede",
+		"price": "1,095",
+		"image": "/assets/images/product/product-image-1-m.webp",
+		"colors": [
+			{
+				"name": "Glitz Cream",
+				"pattern": "/assets/images/patterns/pattern-glitz-cream.webp",
+				"image": "/assets/images/product/product-image-1-m.webp"
+			},
+			{
+				"name": "Red",
+				"pattern": "/assets/images/patterns/pattern-red.webp",
+				"image": "/assets/images/product/product-image-2-m.webp"
+			},
+			{
+				"name": "Black",
+				"pattern": "/assets/images/patterns/pattern-black.webp",
+				"image": "/assets/images/product/product-image-3-m.webp"
+			},
+			{
+				"name": "Espresso",
+				"pattern": "/assets/images/patterns/pattern-suede-espresso.webp",
+				"image": "/assets/images/product/product-image-4-m.webp"
+			},
+			{
+				"name": "Navy Blue",
+				"pattern": "/assets/images/patterns/pattern-navy.webp",
+				"image": "/assets/images/product/product-image-5-m.webp"
+			},
+			{
+				"name": "Olive Green",
+				"pattern": "/assets/images/patterns/pattern-olive.webp",
+				"image": "/assets/images/product/product-image-6-m.webp"
+			},
+			{
+				"name": "Burgundy",
+				"pattern": "/assets/images/patterns/pattern-burgundy.webp",
+				"image": "/assets/images/product/product-image-7-m.webp"
+			}
+		]
+	},
+	{
+		"id": "GY4580.S55-2020-C-7",
+		"title": "Classic Western Boot",
+		"price": "1,250",
+		"image": "/assets/images/product/product-image-2-m.webp",
+		"colors": [
+			{
+				"name": "Brown",
+				"pattern": "/assets/images/patterns/pattern-brown.webp",
+				"image": "/assets/images/product/product-image-5-m.webp"
+			},
+			{
+				"name": "Black",
+				"pattern": "/assets/images/patterns/pattern-black.webp",
+				"image": "/assets/images/product/product-image-6-m.webp"
+			},
+			{
+				"name": "Suede Emerald",
+				"pattern": "/assets/images/patterns/pattern-suede-emerald.webp",
+				"image": "/assets/images/product/product-image-7-m.webp"
+			},
+			{
+				"name": "Patent Black",
+				"pattern": "/assets/images/patterns/pattern-patent-black.webp",
+				"image": "/assets/images/product/product-image-8-m.webp"
+			},
+			{
+				"name": "Mahogany",
+				"pattern": "/assets/images/patterns/pattern-mahogany.webp",
+				"image": "/assets/images/product/product-image-9-m.webp"
+			}
+		]
+	},
+	{
+		"id": "GY4581.S56-2021-D-8",
+		"title": "Roper Style Boot",
+		"price": "1,150",
+		"image": "/assets/images/product/product-image-3-m.webp",
+		"colors": [
+			{
+				"name": "Suede Emerald",
+				"pattern": "/assets/images/patterns/pattern-suede-emerald.webp",
+				"image": "/assets/images/product/product-image-8-m.webp"
+			},
+			{
+				"name": "Patent Black",
+				"pattern": "/assets/images/patterns/pattern-patent-black.webp",
+				"image": "/assets/images/product/product-image-9-m.webp"
+			},
+			{
+				"name": "Cream Orange",
+				"pattern": "/assets/images/patterns/pattern-cream-orange.webp",
+				"image": "/assets/images/product/product-image-1-m.webp"
+			}
+		]
+	},
+	{
+		"id": "GY4582.S57-2022-E-9",
+		"title": "Lucchese Handmade Boot",
+		"price": "1,350",
+		"image": "/assets/images/product/product-image-4-m.webp",
+		"colors": [
+			{
+				"name": "Red Luster",
+				"pattern": "/assets/images/patterns/pattern-red-luster.webp",
+				"image": "/assets/images/product/product-image-2-m.webp"
+			},
+			{
+				"name": "Cream Stitching",
+				"pattern": "/assets/images/patterns/pattern-cream-stitching.webp",
+				"image": "/assets/images/product/product-image-3-m.webp"
+			},
+			{
+				"name": "Espresso",
+				"pattern": "/assets/images/patterns/pattern-suede-espresso.webp",
+				"image": "/assets/images/product/product-image-4-m.webp"
+			}
+		]
+	},
+	{
+		"id": "GY4583.S58-2023-F-10",
+		"title": "Premium Leather Boot",
+		"price": "1,450",
+		"image": "/assets/images/product/product-image-5-m.webp",
+		"colors": [
+			{
+				"name": "Black",
+				"pattern": "/assets/images/patterns/pattern-black.webp",
+				"image": "/assets/images/product/product-image-5-m.webp"
+			},
+			{
+				"name": "Brown",
+				"pattern": "/assets/images/patterns/pattern-brown.webp",
+				"image": "/assets/images/product/product-image-6-m.webp"
+			},
+			{
+				"name": "Glitz Cream",
+				"pattern": "/assets/images/patterns/pattern-glitz-cream.webp",
+				"image": "/assets/images/product/product-image-7-m.webp"
+			}
+		]
+	}
+]

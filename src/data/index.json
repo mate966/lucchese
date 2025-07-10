@@ -85,10 +85,17 @@
 			]
 		},
 		{
-			"type": "related"
-		},
-		{
-			"type": "related"
+			"type": "related",
+			"title": "You may be interested in",
+			"image": {
+				"desktop": {
+					"src": "src/assets/images/related-image-m.jpg",
+					"alt": "Related product"
+				},
+				"mobile": {
+					"src": "src/assets/images/related-image-m.jpg"
+				}
+			}
 		}
 	]
 }

@@ -5,6 +5,7 @@ import { accordionComponent } from './components/Toggle/Components/AccordionComp
 import { buttonComponent } from './components/Toggle/Components/ButtonComponent';
 import { sizesComponent } from './components/Toggle/Components/SizesComponent';
 import { productComponent } from './components/Product';
+import { recommendationsComponent } from './components/Recommendations';
 
 declare global {
 	interface Window {
@@ -27,6 +28,7 @@ export class AlpineManager {
 		this.registerComponent('accordion', accordionComponent);
 		this.registerComponent('sizes', sizesComponent);
 		this.registerComponent('product', productComponent);
+		this.registerComponent('recommendations', recommendationsComponent);
 	}
 
 	registerComponent(

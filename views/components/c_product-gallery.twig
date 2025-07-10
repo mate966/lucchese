@@ -1,11 +1,26 @@
 <template x-if="product && product.gallery">
     <div class="m-product__gallery">
         <div class="swiper product-swiper">
+            <template x-if="product.bestSeller === true">
+                <div class="tw-absolute tw-z-10 tw-top-4 tw-left-4 ">
+                    {% include '../atoms/a_badge.twig' with {
+                        text: 'Best Seller',
+                        show: true
+                    } %}
+                </div>
+            </template>
+
+            {% include '../atoms/a_button.twig' with {
+                icons: ['i_heart'],
+                classes: ['tw-absolute tw-z-10 tw-top-2 tw-right-2 tw-w-12 tw-h-12 tw-center']
+            } %}
+
             <div class="swiper-wrapper">
                 <template x-for="(image, index) in product.gallery" :key="index">
-                    <div class="swiper-slide">
-                        <img :src="image" :alt="product.title" class="tw-w-full tw-h-auto tw-object-cover">
-                    </div>
+                    {% include '../components/c_slide.twig' with {
+                        image: image,
+                        product: product
+                    } %}
                 </template>
             </div>
         </div>
@@ -13,9 +28,10 @@
         <div class="swiper product-thumbs tw-mt-[1px]">
             <div class="swiper-wrapper">
                 <template x-for="(image, index) in product.gallery" :key="index">
-                    <div class="swiper-slide tw-cursor-pointer" @click="goToImage(index)">
-                        <img :src="image" :alt="product.title" class="tw-w-full tw-object-cover">
-                    </div>
+                    {% include '../components/c_slide.twig' with {
+                        image: image,
+                        product: product
+                    } %}
                 </template>
             </div>
         </div>

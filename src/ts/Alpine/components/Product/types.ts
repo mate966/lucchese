@@ -20,7 +20,6 @@ export interface ProductState {
 	goToImage(_index: number): void;
 	addToCart(): void;
 
-	// Funkcje pomocnicze dla szablonów
 	hasOptions(): boolean;
 	getOptions(): (number | string)[];
 	getOptionsByType(_type: string): (number | string)[];

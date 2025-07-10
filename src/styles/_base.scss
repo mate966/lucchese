@@ -1,7 +1,15 @@
+:root {
+	--header-height: 64px;
+}
+
 body {
 	font-family: 'BrandonGrotesque', sans-serif;
 	color: black;
 	font-weight: 400;
+}
+
+.wrapper {
+	padding-top: var(--header-height);
 }
 
 * {

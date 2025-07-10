@@ -9,6 +9,7 @@ export default {
 					DEFAULT: '#0c2852',
 				},
 				neutrals: {
+					10: '#fafafa',
 					40: '#d9d9d9',
 					80: '#4d4d4d',
 				},
@@ -20,6 +21,7 @@ export default {
 				'heading-28': ['28px', '34px'],
 				lg: ['18px', '25px'],
 				md: ['14px', '24px'],
+				sm: ['12px', '16px'],
 			},
 			lineHeight: {
 				md: '18px',

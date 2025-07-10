@@ -1,0 +1,11 @@
+<div class="swiper-slide">
+    {% include '../atoms/a_picture.twig' with {
+        image: image,
+        alt: product.title,
+        classes: 'tw-w-full tw-h-auto tw-object-cover'
+    } %}
+
+    <div class="tw-absolute tw-top-0 tw-left-0 tw-w-full tw-h-full tw-bg-black tw-opacity-50">
+        <p class="tw-text-white tw-text-center tw-text-2xl tw-font-bold tw-uppercase">{{ product.title }}</p>
+    </div>
+</div>

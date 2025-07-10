@@ -1,29 +1,68 @@
 import type { SwiperState } from './types';
 import Swiper from 'swiper';
-import { Navigation, Thumbs } from 'swiper/modules';
+import { Navigation, Thumbs, Pagination } from 'swiper/modules';
 
 export class SwiperComponent implements SwiperState {
 	mainSwiper: Swiper | null = null;
 	thumbsSwiper: Swiper | null = null;
 
-	initSwiper(mainSelector: string, thumbsSelector: string): void {
+	initSwiper(mainSelector: string, thumbsSelector?: string): void {
 		this.destroySwiper();
 
-		this.thumbsSwiper = new Swiper(thumbsSelector, {
-			modules: [Navigation, Thumbs],
-			spaceBetween: 1,
-			slidesPerView: 3.5,
-			freeMode: true,
-			watchSlidesProgress: true,
-		});
+		const mainElement = document.querySelector(mainSelector);
+		if (!mainElement) {
+			console.warn(`Swiper element not found: ${mainSelector}`);
+			return;
+		}
 
-		this.mainSwiper = new Swiper(mainSelector, {
-			modules: [Navigation, Thumbs],
-			spaceBetween: 0,
-			thumbs: {
-				swiper: this.thumbsSwiper as Swiper,
-			},
-		});
+		if (thumbsSelector) {
+			const thumbsElement = document.querySelector(thumbsSelector);
+			if (!thumbsElement) {
+				console.warn(`Thumbs element not found: ${thumbsSelector}`);
+				return;
+			}
+
+			this.thumbsSwiper = new Swiper(thumbsSelector, {
+				modules: [Navigation, Thumbs],
+				spaceBetween: 1,
+				slidesPerView: 3.5,
+				freeMode: true,
+				watchSlidesProgress: true,
+			});
+
+			this.mainSwiper = new Swiper(mainSelector, {
+				modules: [Navigation, Thumbs],
+				spaceBetween: 0,
+				thumbs: {
+					swiper: this.thumbsSwiper as Swiper,
+				},
+			});
+		} else {
+			this.mainSwiper = new Swiper(mainSelector, {
+				modules: [Navigation, Pagination],
+				spaceBetween: 20,
+				slidesPerView: 1,
+				navigation: {
+					nextEl: '.swiper-button-next',
+					prevEl: '.swiper-button-prev',
+				},
+				pagination: {
+					el: '.swiper-pagination',
+					clickable: true,
+				},
+				breakpoints: {
+					640: {
+						slidesPerView: 2,
+					},
+					768: {
+						slidesPerView: 3,
+					},
+					1024: {
+						slidesPerView: 4,
+					},
+				},
+			});
+		}
 	}
 
 	destroySwiper(): void {
