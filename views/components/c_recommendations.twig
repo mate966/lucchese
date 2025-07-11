@@ -1,9 +1,9 @@
-<div class="c-recommendations" x-data="recommendations()" x-init="loadRecommendations()">
-    <div class="c-recommendations__header tw-py-[10px] tw-px-[45px] tw-mb-6">
-        <h2 class="tw-text-heading-28 tw-font-light tw-text-center tw-text-primary tw-uppercase">You may be interested in</h2>
+<div class="c-recommendations md:tw-grid md:tw-grid-cols-[40%_60%] md:tw-grid-rows-[40px_1fr] lg:tw-grid lg:tw-grid-cols-[34.15%_65.85%] lg:tw-grid-rows-[40px_1fr] 2xl:tw-grid-rows-[64px_1fr]" x-data="recommendations()" x-init="loadRecommendations()">
+    <div class="c-recommendations__header tw-py-[10px] tw-px-[45px] tw-mb-6 lg:tw-py-0 lg:tw-px-0 lg:tw-mb-0">
+        <h2 class="tw-text-heading-28 tw-font-light tw-text-center tw-text-primary tw-uppercase lg:tw-text-left">You may be interested in</h2>
     </div>
 
-    <div class="c-recommendations__image tw-mx-0.5 tw-mb-1.5">
+    <div class="c-recommendations__image tw-mx-0.5 tw-mb-1.5 lg:tw-row-span-2 lg:tw-col-span-1 lg:tw-order-first lg:tw-pl-10 lg:tw-pr-8 lg:tw-mr-2 lg:tw-mb-8">
         {% include '../atoms/a_picture.twig' with image %}
     </div>
 
