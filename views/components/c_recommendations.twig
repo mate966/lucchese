@@ -4,7 +4,10 @@
     </div>
 
     <div class="c-recommendations__image tw-mx-0.5 tw-mb-1.5 lg:tw-row-span-2 lg:tw-col-span-1 lg:tw-order-first lg:tw-pl-10 lg:tw-pr-8 lg:tw-mr-2 lg:tw-mb-8">
-        {% include '../atoms/a_picture.twig' with image %}
+        {% include '../atoms/a_picture.twig' with {
+            image: image,
+            classes: ['lg:tw-h-full']
+        } %}
     </div>
 
     <div x-show="loading" class="c-recommendations__loading tw-text-center tw-py-8">
@@ -20,7 +23,7 @@
             <div class="swiper-wrapper">
                 <template x-for="product in recommendations" :key="product.id">
                     <div class="swiper-slide">
-                        <div class="c-recommendations__product">
+                        <div class="c-recommendations__product lg:tw-border lg:tw-border-1 lg:tw-border-white lg:tw-border-r-0 lg:tw-border-solid">
                             <div class="c-recommendations__product-image">
                                 <img 
                                     :src="getSelectedColorImage(product.id)" 
@@ -30,13 +33,13 @@
                                 />
                             </div>
                             
-                            <div class="c-recommendations__product-info tw-relative tw-px-5 tw-py-6">
-                                <h3 class="c-recommendations__product-title tw-text-primary tw-tracking-[0.32px] tw-uppercase tw-py-2" x-text="product.title"></h3>
-                                <div class="tw-text-neutrals-80 tw-leading-lg">
+                            <div class="c-recommendations__product-info tw-relative tw-px-5 tw-py-6 lg:tw-p-0 lg:tw-pt-6">
+                                <h3 class="c-recommendations__product-title tw-text-primary tw-tracking-[0.32px] tw-uppercase tw-py-2 lg:tw-px-4" x-text="product.title"></h3>
+                                <div class="tw-text-neutrals-80 tw-leading-lg lg:tw-px-4">
                                     <p><span x-text="`$${product.price}`"></span></p>
                                 </div>
                                 {# TODO: refactor, make it a component #}
-                                <div class="c-recommendations__product-colors tw-absolute tw-top-0 tw-left-0 tw-px-5 tw-translate-y-[-50%]">
+                                <div class="c-recommendations__product-colors tw-absolute tw-top-0 tw-left-0 tw-px-5 tw-translate-y-[-50%] lg:tw-relative lg:tw-translate-y-0 lg:tw-px-4 lg:tw-py-2 lg:tw-pb-2">
                                     <ul class="c-colors-select tw-flex tw-flex-wrap -tw-mt-0.5 tw-ml-0.5">
                                         <template x-for="(color, index) in isExpanded(product.id) ? product.colors : product.colors.slice(0, 4)" :key="color.name">
                                             <li 

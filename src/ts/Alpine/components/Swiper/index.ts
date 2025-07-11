@@ -58,7 +58,9 @@ export class SwiperComponent implements SwiperState {
 						slidesPerView: 3,
 					},
 					1024: {
-						slidesPerView: 4,
+						slidesPerView: 2,
+						spaceBetween: 0,
+						loop: true,
 					},
 				},
 			});
