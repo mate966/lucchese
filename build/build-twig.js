@@ -9,8 +9,8 @@ const __dirname = dirname(__filename);
 twig.cache(false);
 
 try {
-	const jsDir = join(__dirname, '..', 'dist', 'js');
-	const cssDir = join(__dirname, '..', 'dist', 'css');
+	const jsDir = join(__dirname, '..', 'public', 'js');
+	const cssDir = join(__dirname, '..', 'public', 'css');
 	
 	const jsFiles = fs
 		.readdirSync(jsDir)
