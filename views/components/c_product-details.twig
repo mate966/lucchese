@@ -1,11 +1,18 @@
 <template x-if="product">
-    <div class="c-product-details tw-px-4 lg:tw-pl-12 lg:tw-pr-4 lg:tw-sticky lg:tw-top-0 lg:tw-z-10 lg:tw-h-fit lg:tw-min-h-0">
+    <div class="c-product-details tw-px-4 lg:tw-pl-12 lg:tw-pr-4 lg:tw-sticky lg:tw-top-[64px] lg:tw-z-10 lg:tw-h-fit lg:tw-min-h-0">
         <div class="c-product-details__top">
             <div class="tw-pt-1.5 tw-text-neutrals-80 tw-leading-lg">
                 <p><span x-text="`$${product.price}`"></span></p>
             </div>
 
-            <h1 class="tw-mt-0.5 tw-text-heading-28 tw-text-primary tw-font-light tw-tracking-light tw-uppercase" x-text="product.title"></h1>
+            <h1 class="tw-mt-0.5 tw-text-heading-28 tw-text-primary tw-font-light tw-tracking-light tw-uppercase lg:tw-mt-1 tw-mb-3" x-text="product.title"></h1>
+        
+            <div class="c-product-details__id-container tw-hidden lg:tw-block">
+                <div class="c-product-details__id tw-text-md tw-leading-md tw-text-neutrals-80 tw-uppercase">
+                    <p>Style No.<span x-text="product.id"></span></p>
+                </div>
+                <hr class="tw-my-6 tw-h-px tw-w-full tw-bg-neutrals-40">
+            </div>
         </div>
 
         <div class="c-product-details__middle tw-mt-6">
@@ -18,11 +25,13 @@
                 {% include '../components/c_colors-select.twig' %}
             </div>
 
-            <hr class="tw-my-6 tw-h-px tw-w-full tw-bg-neutrals-40">
-            <div class="c-product-details__id tw-text-md tw-leading-md tw-text-neutrals-80 tw-uppercase">
-                <p>Style No.<span x-text="product.id"></span></p>
+            <div class="c-product-details__id-container lg:tw-hidden">
+                <hr class="tw-my-6 tw-h-px tw-w-full tw-bg-neutrals-40">
+                <div class="c-product-details__id tw-text-md tw-leading-md tw-text-neutrals-80 tw-uppercase">
+                    <p>Style No.<span x-text="product.id"></span></p>
+                </div>
+                <hr class="tw-my-6 tw-h-px tw-w-full tw-bg-neutrals-40">
             </div>
-            <hr class="tw-my-6 tw-h-px tw-w-full tw-bg-neutrals-40">
 
             <div class="c-product-details__description">
                 <div class="tw-text-lg tw-text-black" x-text="product.description"></div>

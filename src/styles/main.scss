@@ -24,6 +24,9 @@
 @use './components/_product-details.scss';
 @use './components/_recommendations.scss';
 
+// Scaffold
+@use './scaffold/_header.scss';
+
 // Swiper styles
 @use 'swiper/css';
 @use 'swiper/css/navigation';
