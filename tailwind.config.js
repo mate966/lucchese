@@ -4,6 +4,12 @@ export default {
 	prefix: 'tw-',
 	theme: {
 		extend: {
+			screens: {
+				'container-up': '1024px',
+			},
+			maxWidth: {
+				'product-gallery-container': 'calc(50vw + 214px)',
+			},
 			colors: {
 				primary: {
 					DEFAULT: '#0c2852',
