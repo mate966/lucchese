@@ -18,4 +18,28 @@
 			}
 		}
 	}
+
+	&__product {
+		.c-recommendations__product-favorite {
+			opacity: 0;
+		}
+
+		&:hover {
+			.c-recommendations__product-favorite {
+				opacity: 1;
+			}
+		}
+	}
+
+	&__product-colors {
+		&:hover {
+			.c-recommendations__product-colors-title {
+				display: none;
+			}
+
+			.c-colors-select {
+				display: flex;
+			}
+		}
+	}
 }

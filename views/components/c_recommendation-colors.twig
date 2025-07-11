@@ -1,5 +1,5 @@
-<div class="c-recommendations__product-colors tw-absolute tw-top-0 tw-left-0 tw-px-5 tw-translate-y-[-50%] lg:tw-translate-y-0 lg:tw-px-4 lg:tw-py-2 lg:tw-pb-2 lg:tw-top-auto lg:-tw-bottom-100 lg:tw-z-20">
-    <div class="lg:tw-block tw-hidden tw-text-xs tw-font-semibold tw-text-gray-700  tw-pointer-events-none">
+<div class="c-recommendations__product-colors tw-w-fulltw-absolute tw-top-0 tw-left-0 tw-px-5 tw-translate-y-[-50%] lg:tw-translate-y-0 lg:tw-px-4 lg:tw-py-2 lg:tw-pb-2 lg:tw-min-h-[52px] lg:tw-flex lg:tw-items-center">
+    <div class="c-recommendations__product-colors-title lg:tw-block tw-hidden tw-text-xs tw-font-semibold tw-text-gray-700  tw-pointer-events-none">
         <span 
             class="tw-text-[14px] tw-leading-[18px] tw-font-normal tw-text-neutrals-80 "
             x-text="`${product.colors && product.colors.length ? product.colors.length : 0} colors`"
@@ -10,10 +10,10 @@
             <template x-for="(color, index) in isExpanded(product.id) ? product.colors : product.colors.slice(0, 4)" :key="color.name">
                 <li 
                     @click="selectColor(product.id, color.name)"
-                    class="a-color-item tw-relative tw-w-12 tw-h-12 tw-mr-2 tw-cursor-pointer" 
+                    class="a-color-item tw-relative tw-w-12 tw-h-12 lg:tw-w-[26px] lg:tw-h-[26px] tw-mr-2 tw-cursor-pointer" 
                     :class="{ 'is-active': getSelectedColor(product.id) === color.name }"
                 >
-                    <div :class="{ 'tw-w-[42px] tw-h-[42px]': getSelectedColor(product.id) === color.name }" class="a-color-item__image tw-w-11 tw-h-11">
+                    <div :class="{ 'tw-w-[42px] tw-h-[42px]': getSelectedColor(product.id) === color.name }" class="a-color-item__image tw-w-11 tw-h-11 lg:tw-w-[26px] lg:tw-h-[26px]">
                         <div class="a-color-item__image-inner tw-w-full tw-h-full tw-rounded-full tw-overflow-hidden">
                             <img :src="color.pattern" :alt="color.name" class="tw-w-full tw-h-full tw-object-cover">
                         </div>
@@ -21,7 +21,7 @@
                 </li>
             </template>
         </template>
-        <li x-show="product.colors && product.colors.length > 4" class="a-color-item tw-relative tw-w-12 tw-h-12">
+        <li x-show="product.colors && product.colors.length > 4" class="a-color-item tw-relative tw-w-12 tw-h-12 lg:tw-w-[26px] lg:tw-h-[26px]">
             <a 
                 :href="`https://www.lucchese.com/`"
                 target="_blank"

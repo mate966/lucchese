@@ -24,6 +24,11 @@ export default {
 			spacing: {
 				'left-full': '-100%',
 			},
+			minHeight: {
+				'recommendations-md': '80vh',
+				'recommendations-lg': '85vh',
+				'recommendations-2xl': '90vh',
+			},
 			fontSize: {
 				'heading-28': ['28px', '34px'],
 				xl: ['20px', '24px'],

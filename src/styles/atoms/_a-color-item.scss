@@ -1,10 +1,14 @@
+@use '../breakpoints' as *;
+
 .a-color-item {
 	&__image {
 		position: relative;
 
 		&:hover {
-			width: 42px;
-			height: 42px;
+			.c-product-details & {
+				width: 42px;
+				height: 42px;
+			}
 
 			&::before {
 				border-width: 2px;
@@ -23,6 +27,13 @@
 			background-color: transparent;
 			border: 1px solid theme('colors.neutrals.40');
 			border-radius: 100%;
+
+			.c-recommendations__product-colors & {
+				@include breakpoint(desktop) {
+					width: 32px;
+					height: 32px;
+				}
+			}
 
 			.is-active & {
 				border-width: 2px;
