@@ -11,14 +11,12 @@ export class SwiperComponent implements SwiperState {
 
 		const mainElement = document.querySelector(mainSelector);
 		if (!mainElement) {
-			console.warn(`Swiper element not found: ${mainSelector}`);
 			return;
 		}
 
 		if (thumbsSelector) {
 			const thumbsElement = document.querySelector(thumbsSelector);
 			if (!thumbsElement) {
-				console.warn(`Thumbs element not found: ${thumbsSelector}`);
 				return;
 			}
 

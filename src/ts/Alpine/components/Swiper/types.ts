@@ -3,7 +3,7 @@ import type Swiper from 'swiper';
 export interface SwiperState {
 	mainSwiper: Swiper | null;
 	thumbsSwiper: Swiper | null;
-	initSwiper(_mainSelector: string, _thumbsSelector?: string): void;
+	initSwiper(mainSelector: string, thumbsSelector?: string): void;
 	destroySwiper(): void;
-	goToSlide(_index: number): void;
+	goToSlide(index: number): void;
 }

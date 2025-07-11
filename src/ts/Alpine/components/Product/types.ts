@@ -11,17 +11,17 @@ export interface ProductState {
 	} | null;
 	currentImageIndex: number;
 
-	loadProduct(_id: string): Promise<void>;
-	selectSize(_size: {
+	loadProduct(id: string): Promise<void>;
+	selectSize(size: {
 		size: number;
 		widths: string[];
 		toeHeels: string[];
 	}): void;
-	goToImage(_index: number): void;
+	goToImage(index: number): void;
 	addToCart(): void;
 
-	getOptionsByType(_type: string): (number | string)[];
-	selectSizeOption(_type: string, _item: number | string): void;
+	getOptionsByType(type: string): (number | string)[];
+	selectSizeOption(type: string, item: number | string): void;
 
 	// Fixed button logic
 	isAddToCartButtonVisible: boolean;

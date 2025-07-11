@@ -12,7 +12,7 @@ export const toggleComponent = (): ToggleState => ({
 		this.isOpen = true;
 	},
 	updateDialog() {
-		console.log('updateDialog');
+		// No-op: Basic toggle component doesn't need dialog logic
 	},
 });
 

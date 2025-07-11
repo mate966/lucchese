@@ -20,7 +20,16 @@ export default [
 		rules: {
 			'no-console': 'warn',
 			'no-debugger': 'error',
-			'no-unused-vars': 'warn',
+			'no-unused-vars': 'off',
+			'@typescript-eslint/no-unused-vars': [
+				'warn',
+				{
+					args: 'none',
+					ignoreRestSiblings: true,
+					argsIgnorePattern: '^_',
+					varsIgnorePattern: '^_',
+				},
+			],
 			eqeqeq: ['error', 'always'],
 			curly: 'error',
 			semi: ['error', 'always'],
@@ -37,7 +46,16 @@ export default [
 		rules: {
 			'no-console': 'warn',
 			'no-debugger': 'error',
-			'no-unused-vars': 'warn',
+			'no-unused-vars': 'off',
+			'@typescript-eslint/no-unused-vars': [
+				'warn',
+				{
+					args: 'none',
+					ignoreRestSiblings: true,
+					argsIgnorePattern: '^_',
+					varsIgnorePattern: '^_',
+				},
+			],
 			eqeqeq: ['error', 'always'],
 			curly: 'error',
 			semi: ['error', 'always'],

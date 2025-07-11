@@ -32,7 +32,6 @@ export class RecommendationsComponent implements RecommendationsState {
 				this.initSwiper();
 			}, 100);
 		} catch (error) {
-			console.error('Error loading recommendations:', error);
 			this.error =
 				error instanceof Error
 					? error.message
