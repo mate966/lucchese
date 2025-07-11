@@ -53,7 +53,7 @@ try {
 			process.exit(1);
 		}
 
-		const distPath = join(__dirname, '..', 'dist', 'index.html');
+		const distPath = join(__dirname, '..', 'public', 'index.html');
 		const htmlOut = html.replace(/src\/assets\/images\//g, '/assets/images/');
 		fs.writeFileSync(distPath, htmlOut);
 	});
