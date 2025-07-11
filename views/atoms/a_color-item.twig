@@ -1,8 +1,7 @@
 <li class="a-color-item tw-relative tw-w-16 tw-h-16" :class="{ 'is-active': product.color.name === color.name }">
-    <a :href="color.url || '#'" class="tw-absolute tw-inset-0">
-    </a>
-
     <div :class="{ 'tw-w-[42px] tw-h-[42px]': product.color.name === color.name }" class="a-color-item__image tw-w-11 tw-h-11">
+        <a :href="color.url || '#'" class="tw-absolute tw-inset-0">
+        </a>
         <div class="a-color-item__image-inner tw-w-full tw-h-full tw-rounded-full tw-overflow-hidden">
             <img :src="color.pattern" :alt="color.name" class="tw-w-full tw-h-full tw-object-cover">
         </div>
