@@ -10,72 +10,8 @@
         } %}
     </div>
 
-    <div x-show="loading" class="c-recommendations__loading tw-text-center tw-py-8">
-        <div class="tw-text-neutrals-60">Loading recommendations...</div>
-    </div>
-
-    <div x-show="error" class="c-recommendations__error tw-text-center tw-py-8">
-        <div class="tw-text-red-600" x-text="error"></div>
-    </div>
-
-    <div x-show="!loading && !error && recommendations.length > 0" class="c-recommendations__slider">
-        <div class="swiper recommendations-swiper">
-            <div class="swiper-wrapper">
-                <template x-for="product in recommendations" :key="product.id">
-                    <div class="swiper-slide">
-                        <div class="c-recommendations__product lg:tw-border lg:tw-border-1 lg:tw-border-white lg:tw-border-r-0 lg:tw-border-solid">
-                            <div class="c-recommendations__product-image">
-                                <img 
-                                    :src="getSelectedColorImage(product.id)" 
-                                    :alt="product.title"
-                                    class="tw-w-full tw-object-cover"
-                                    loading="lazy"
-                                />
-                            </div>
-                            
-                            <div class="c-recommendations__product-info tw-relative tw-px-5 tw-py-6 lg:tw-p-0 lg:tw-pt-6">
-                                <h3 class="c-recommendations__product-title tw-text-primary tw-tracking-[0.32px] tw-uppercase tw-py-2 lg:tw-px-4" x-text="product.title"></h3>
-                                <div class="tw-text-neutrals-80 tw-leading-lg lg:tw-px-4">
-                                    <p><span x-text="`$${product.price}`"></span></p>
-                                </div>
-                                <div class="c-recommendations__product-colors tw-absolute tw-top-0 tw-left-0 tw-px-5 tw-translate-y-[-50%] lg:tw-relative lg:tw-translate-y-0 lg:tw-px-4 lg:tw-py-2 lg:tw-pb-2">
-                                    <ul class="c-colors-select tw-flex tw-flex-wrap -tw-mt-0.5 tw-ml-0.5">
-                                        <template x-for="(color, index) in isExpanded(product.id) ? product.colors : product.colors.slice(0, 4)" :key="color.name">
-                                            <li 
-                                                @click="selectColor(product.id, color.name)"
-                                                class="a-color-item tw-relative tw-w-12 tw-h-12 tw-mr-2 tw-cursor-pointer" 
-                                                :class="{ 'is-active': getSelectedColor(product.id) === color.name }"
-                                            >
-                                                <div :class="{ 'tw-w-[42px] tw-h-[42px]': getSelectedColor(product.id) === color.name }" class="a-color-item__image tw-w-11 tw-h-11">
-                                                    <div class="a-color-item__image-inner tw-w-full tw-h-full tw-rounded-full tw-overflow-hidden">
-                                                        <img :src="color.pattern" :alt="color.name" class="tw-w-full tw-h-full tw-object-cover">
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </template>
-                                        
-                                        <li x-show="product.colors.length > 4" class="a-color-item tw-relative tw-w-12 tw-h-12">
-                                            <a 
-                                                :href="`https://www.lucchesse.com/`"
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                class="tw-absolute tw-inset-0 tw-cursor-pointer tw-flex tw-items-center tw-justify-center tw-bg-gray-100 tw-rounded-full tw-text-xs tw-font-semibold tw-text-gray-600 hover:tw-bg-gray-200 tw-transition-all tw-duration-200"
-                                                :title="`${product.colors.length - 4} more colors on lucchese.com`"
-                                            >
-                                                <span x-text="`+${product.colors.length - 4}`"></span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </template>
-            </div>
-        </div>
-    </div>
-
-    <div x-show="!loading && !error && recommendations.length === 0" class="c-recommendations__empty tw-text-center tw-py-8">
-        <div class="tw-text-neutrals-60">No recommendations available</div>
+    <div class="c-recommendations__content">
+        {% include '../components/c_recommendation-states.twig' %}
+        {% include '../components/c_recommendation-slider.twig' %}
     </div>
 </div> 

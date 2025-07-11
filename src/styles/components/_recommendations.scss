@@ -2,4 +2,20 @@
 	&__image img {
 		height: 100%;
 	}
+
+	a {
+		&:hover {
+			&
+				~ .c-recommendations__product-info
+				.c-recommendations__product-colors {
+				> div {
+					display: none;
+				}
+
+				.c-colors-select {
+					display: flex;
+				}
+			}
+		}
+	}
 }

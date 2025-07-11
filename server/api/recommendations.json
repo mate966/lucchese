@@ -4,6 +4,7 @@
 		"title": "Priscilla Suede",
 		"price": "1,095",
 		"image": "/assets/images/product/product-image-1-m.webp",
+		"url": "https://lucchese.com",
 		"colors": [
 			{
 				"name": "Glitz Cream",
@@ -47,6 +48,8 @@
 		"title": "Classic Western Boot",
 		"price": "1,250",
 		"image": "/assets/images/product/product-image-2-m.webp",
+		"url": "https://lucchese.com",
+		"bestSeller": true,
 		"colors": [
 			{
 				"name": "Brown",
@@ -80,6 +83,7 @@
 		"title": "Roper Style Boot",
 		"price": "1,150",
 		"image": "/assets/images/product/product-image-3-m.webp",
+		"url": "https://lucchese.com",
 		"colors": [
 			{
 				"name": "Suede Emerald",
@@ -103,6 +107,7 @@
 		"title": "Lucchese Handmade Boot",
 		"price": "1,350",
 		"image": "/assets/images/product/product-image-4-m.webp",
+		"url": "https://lucchese.com",
 		"colors": [
 			{
 				"name": "Red Luster",
@@ -126,6 +131,7 @@
 		"title": "Premium Leather Boot",
 		"price": "1,450",
 		"image": "/assets/images/product/product-image-5-m.webp",
+		"url": "https://lucchese.com",
 		"colors": [
 			{
 				"name": "Black",

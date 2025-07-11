@@ -1,0 +1,30 @@
+<div class="c-recommendations__product lg:tw-border lg:tw-border-1 lg:tw-border-white lg:tw-border-r-0 lg:tw-border-solid tw-block tw-h-full tw-no-underline hover:tw-shadow-lg tw-relative">
+    {% if product.bestSeller %}
+        <div class="tw-absolute tw-z-10 tw-top-4 tw-left-4">
+            {% include '../atoms/a_badge.twig' with {
+                text: 'Best Seller',
+                show: true
+            } %}
+        </div>
+    {% endif %}
+    <div class="tw-absolute tw-inset-0">
+        <a :href="product.url" target="_blank" rel="noopener" class="tw-block tw-h-full tw-absolute tw-inset-0 tw-z-10"></a>
+            <div class="c-recommendations__product-image tw-relative">
+                <img 
+                    :src="getSelectedColorImage(product.id)" 
+                    :alt="product.title"
+                    class="tw-w-full tw-object-cover"
+                    loading="lazy"
+                />
+            </div>
+            
+            <div class="c-recommendations__product-info tw-relative tw-px-5 tw-py-6 lg:tw-p-0 lg:tw-pt-6">
+                <h3 class="c-recommendations__product-title tw-text-primary tw-tracking-[0.32px] tw-uppercase tw-py-2 lg:tw-px-4" x-text="product.title"></h3>
+                <div class="tw-text-neutrals-80 tw-leading-lg lg:tw-px-4">
+                    <p><span x-text="`$${product.price}`"></span></p>
+                </div>
+                
+                {% include '../components/c_recommendation-colors.twig' %}
+            </div>
+    </div>
+</div> 

@@ -1,0 +1,11 @@
+<div x-show="loading" class="c-recommendations__loading tw-text-center tw-py-8">
+    <div class="tw-text-neutrals-60">Loading recommendations...</div>
+</div>
+
+<div x-show="error" class="c-recommendations__error tw-text-center tw-py-8">
+    <div class="tw-text-red-600" x-text="error"></div>
+</div>
+
+<div x-show="!loading && !error && recommendations.length === 0" class="c-recommendations__empty tw-text-center tw-py-8">
+    <div class="tw-text-neutrals-60">No recommendations available</div>
+</div> 
