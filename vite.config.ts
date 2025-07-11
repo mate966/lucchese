@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite';
-import copyImages from './build/vite-plugins/copyImages';
+import copyAssets from './build/vite-plugins/copyAssets';
 
 const outputConfig = {
 	entryFileNames: 'js/[name]-[hash].js',
@@ -37,5 +37,5 @@ export default defineConfig({
 			output: outputConfig,
 		},
 	},
-	plugins: [copyImages()],
+	plugins: [copyAssets()],
 });
