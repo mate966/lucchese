@@ -80,19 +80,23 @@ if (isDev) {
 	});
 }
 
-app.use(express.static(join(__dirname, '..', 'public')));
-app.use('/assets', express.static(join(__dirname, '..', 'src', 'assets')));
 app.use('/api', apiRouter);
+
+app.use('/css', express.static(join(__dirname, '..', 'public', 'css')));
+app.use('/js', express.static(join(__dirname, '..', 'public', 'js')));
+app.use('/assets', express.static(join(__dirname, '..', 'src', 'assets')));
 
 if (!isDev) {
 	app.use('/src', express.static(join(__dirname, '..', 'src')));
-	app.use('/css', express.static(join(__dirname, '..', 'public', 'css')));
-	app.use('/js', express.static(join(__dirname, '..', 'public', 'js')));
 	app.use(
 		'/assets',
 		express.static(join(__dirname, '..', 'public', 'assets'))
 	);
-	app.use(express.static(join(__dirname, '..', 'public')));
+	app.use(
+		express.static(join(__dirname, '..', 'public'), {
+			index: false,
+		})
+	);
 }
 
 app.get('/', (req, res) => {
