@@ -1,5 +1,5 @@
 <template x-if="product">
-    <div class="c-product-details tw-px-4 lg:tw-pl-12 lg:tw-pr-4 lg:tw-sticky lg:tw-top-[64px] lg:tw-z-10 lg:tw-h-fit lg:tw-min-h-0">
+    <div class="c-product-details tw-px-4 lg:tw-pl-12 lg:tw-pr-10 lg:tw-sticky lg:tw-top-[64px] lg:tw-z-10 lg:tw-h-fit lg:tw-min-h-0">
         <div class="c-product-details__top">
             <div class="tw-pt-1.5 tw-text-neutrals-80 tw-leading-lg">
                 <p><span x-text="`$${product.price}`"></span></p>
@@ -80,7 +80,7 @@
                 </div>
                 <div 
                     x-show="!isAddToCartButtonVisible && selectedSize"
-                    style="position:fixed; bottom:10px; left:0; right:0; z-index:100;"
+                    class="tw-fixed tw-bottom-[10px] tw-left-0 tw-right-0 tw-z-[100] tw-w-full tw-flex tw-justify-center tw-pointer-events-none tw-px-4"
                     class="tw-w-full tw-flex tw-justify-center tw-pointer-events-none tw-px-4"
                 >
                     <div class="tw-w-full tw-pointer-events-auto">

@@ -16,20 +16,22 @@
     <div :class="isOpen && 'is-open'" class="c-accordion-item__content tw-text-black">
         <div class="c-accordion-item__content-inner">
 
-            {% if item.heading %}
-            <p class="{% if item.heading.modifier %}typo-h3--{{ item.heading.modifier }}{% endif %} typo-h3 tw-text-primary">{{ item.heading.text }}</p>
-            {% endif %}
+            <div class="c-accordion-item__inner-text lg:tw-px-[135px]">
+                {% if item.heading %}
+                <p class="{% if item.heading.modifier %}typo-h3--{{ item.heading.modifier }}{% endif %} typo-h3 tw-text-primary">{{ item.heading.text }}</p>
+                {% endif %}
 
-            <p class="tw-mt-5 tw-mb-6">{{ item.content }}</p>
+                <p class="tw-mt-5 tw-mb-6">{{ item.content }}</p>
 
-            {% if item.listItems %}
-            <ul class="c-accordion-item__list tw-my-[18px] tw-pb-4">
-                {% for listItem in item.listItems %}
-                <li class="c-accordion-item__list-item tw-pl-9">{{ listItem.text }}
-                </li>
-                {% endfor %}
+                {% if item.listItems %}
+                <ul class="c-accordion-item__list tw-my-[18px] tw-pb-4">
+                    {% for listItem in item.listItems %}
+                    <li class="c-accordion-item__list-item tw-pl-9">{{ listItem.text }}
+                    </li>
+                    {% endfor %}
                 </ul>
                 {% endif %}
+            </div>
 
             {% if item.image %}
             {% include '../atoms/a_picture.twig' with { image: item.image, alt: item.image.alt } %}
