@@ -1,7 +1,10 @@
-<div :class="isOpen && 'tw-left-0 is-open'" class="tw-fixed tw-top-50 -tw-left-full tw-w-full tw-h-full tw-bg-primary tw-duration-500 tw-z-10 lg:tw-hidden">
-    <div class="menu__inner">
-        <div class="menu__item">
-            <a href="#">Home</a>
+<div 
+    :class="isOpen && 'tw-left-0 is-open'" 
+    class="tw-fixed tw-top-[var(--header-height,4rem)] -tw-left-full tw-w-full tw-h-[calc(100%-var(--header-height,4rem))] tw-bg-white tw-duration-500 tw-z-50 lg:tw-hidden"
+>
+    <div class="menu__inner tw-p-8 tw-h-full tw-overflow-y-auto">
+        <div class="menu__item tw-mb-6">
+            <a href="#" class="tw-text-primary tw-text-xl tw-font-medium tw-block tw-py-3">Home</a>
         </div>
     </div>
 </div>

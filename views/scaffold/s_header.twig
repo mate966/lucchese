@@ -11,15 +11,13 @@
         } %}
     </div>
 
-    <div class="tw-hidden lg:tw-block">
-        {% include '../scaffold/s_menu.twig' %}
-    </div>
+    {% include '../scaffold/s_menu.twig' %}
 
-    <a href="https://www.lucchese.com" class="tw-absolute tw-left-1/2 tw-py-[10px] tw-px-3">
+    <a href="https://www.lucchese.com" class="tw-absolute tw-left-1/2 tw-py-[10px] tw-px-3 -tw-translate-x-1/2" target="_blank" rel="noopener noreferrer" aria-label="Go to Lucchese Bootmaker website">
         <img src="src/assets/images/Lucchese_Bootmaker_RGB_04086.png" alt="Lucchese Bootmaker Logotype" class="tw-max-w-40 tw-h-[42px]" aria-label="Go to Lucchese Bootmaker website" />
     </a>
 
-    <div class="tw-flex tw-h-fit tw-px-4 tw-py-2">
+    <div class="tw-flex lg:tw-h-fit tw-px-4 tw-py-2 tw-h-full">
         <div class="tw-w-14">
             {% include '../atoms/a_button.twig' with { 
                 icons: ['i_search'],
