@@ -1,0 +1,87 @@
+<div 
+    x-show="!isAddToCartButtonVisible && selectedSize"
+    x-transition:enter="tw-transition-transform tw-duration-300 tw-ease-out"
+    x-transition:enter-start="tw-translate-y-full"
+    x-transition:enter-end="tw-translate-y-0"
+    x-transition:leave="tw-transition-transform tw-duration-300 tw-ease-in"
+    x-transition:leave-start="tw-translate-y-0"
+    x-transition:leave-end="tw-translate-y-full"
+    class="tw-hidden lg:tw-block tw-fixed tw-right-16 tw-bottom-8 tw-z-[100] tw-pointer-events-none"
+>
+    <div class="tw-bg-white tw-w-[628px] tw-border tw-border-gray-200 tw-shadow-xl tw-p-4 tw-flex tw-items-center tw-gap-4 tw-pointer-events-auto">
+        <div class="tw-w-14 tw-h-14 tw-flex-shrink-0 tw-overflow-hidden tw-bg-gray-100">
+            <img 
+                :src="product.gallery && product.gallery[0] ? product.gallery[0] : '/assets/images/product/product-image-1-m.webp'" 
+                :alt="product.title"
+                class="tw-w-full tw-h-full tw-object-cover"
+            />
+        </div>
+
+        <div class="tw-flex-1 tw-min-w-0">
+            <h3 class="tw-text-xl tw-text-primary tw-font-light tw-leading-xl tw-uppercase" x-text="product.title"></h3>
+            <div class="tw-mt-1 tw-text-lg tw-leading-lg tw-text-primary tw-text-gray-500 tw-space-y-0.5">
+                <template x-if="selectedSize">
+                    <div class="tw-flex tw-flex-wrap tw-items-center tw-gap-y-0.5">
+                        <template x-if="selectedSize.size">
+                            <span>Size: <span class="tw-text-gray-900" x-text="selectedSize.size"></span></span>
+                        </template>
+                        <hr class="tw-block tw-w-px tw-h-4 tw-flex-basis-px tw-mx-2 tw-bg-neutrals-40">
+                        <template x-if="selectedSize.widths && selectedSize.widths.length > 0">
+                            <span>Width: <span class="tw-text-gray-900" x-text="selectedSize.widths[0]"></span></span>
+                        </template>
+                        <hr class="tw-block tw-w-px tw-h-4 tw-flex-basis-px tw-mx-2 tw-bg-neutrals-40">
+                        <template x-if="selectedSize.toeHeels && selectedSize.toeHeels.length > 0">
+                            <span>Toe + Heel: <span class="tw-text-gray-900" x-text="selectedSize.toeHeels[0]"></span></span>
+                        </template>
+                    </div>
+                </template>
+            </div>
+        </div>
+
+        <div class="tw-flex-shrink-0">
+            {% include '../atoms/a_button.twig' with {
+                xText: "`Add to cart - $${product.price}`",
+                classes: [
+                    'tw-bg-primary',
+                    'tw-text-white',
+                    'tw-text-md',
+                    'tw-font-medium',
+                    'tw-px-2',
+                    'tw-cursor-pointer',
+                    'tw-uppercase',
+                    'tw-tracking-wide',
+                    'tw-h-16',
+                    'tw-whitespace-nowrap',
+                    'tw-transition-colors',
+                    'hover:tw-bg-opacity-90',
+                ],
+                onclick: 'addToCart()'
+            } %}
+        </div>
+    </div>
+</div>
+
+<div 
+    x-show="!isAddToCartButtonVisible && selectedSize"
+    class="tw-block lg:tw-hidden tw-fixed tw-bottom-[10px] tw-left-0 tw-right-0 tw-z-[100] tw-w-full tw-flex tw-justify-center tw-pointer-events-none tw-px-4"
+>
+    <div class="tw-w-full tw-pointer-events-auto">
+        {% include '../atoms/a_button.twig' with {
+            xText: "`Add to cart - $${product.price}`",
+            classes: [
+                'tw-w-full',
+                'tw-bg-primary',
+                'tw-text-md',
+                'tw-font-normal',
+                'tw-tracking-wide',
+                'tw-leading-md',
+                'tw-uppercase',
+                'tw-border-0',
+                'tw-cursor-pointer',
+                'tw-text-white',
+                'tw-h-10',
+            ],
+            onclick: 'addToCart()'
+        } %}
+    </div>
+</div> 

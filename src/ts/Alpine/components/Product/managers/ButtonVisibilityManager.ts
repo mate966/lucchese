@@ -35,11 +35,6 @@ export class ButtonManager {
 	}
 
 	checkAddToCartButtonVisibility(): void {
-		if (window.innerWidth > 768) {
-			this.isAddToCartButtonVisible = true;
-			return;
-		}
-
 		const btn = document.querySelector(
 			'[x-ref="addToCartBtn"]'
 		) as HTMLElement;
@@ -50,21 +45,21 @@ export class ButtonManager {
 		}
 
 		const rect = btn.getBoundingClientRect();
-		const isInViewport =
-			rect.top >= 0 &&
-			rect.bottom <=
-				(window.innerHeight || document.documentElement.clientHeight);
+		const viewportHeight =
+			window.innerHeight || document.documentElement.clientHeight;
 
-		if (this.isAddToCartButtonVisible !== isInViewport) {
-			this.isAddToCartButtonVisible = isInViewport;
+		// Add safety margin - button needs to be completely visible with some space
+		const safetyMargin = 20;
+		const isFullyVisible =
+			rect.top >= 0 && rect.bottom <= viewportHeight - safetyMargin;
+
+		if (this.isAddToCartButtonVisible !== isFullyVisible) {
+			this.isAddToCartButtonVisible = isFullyVisible;
 		}
 	}
 
 	initAddToCartButtonVisibility(): void {
-		if (window.innerWidth > 768) {
-			this.isAddToCartButtonVisible = true;
-			return;
-		}
+		this.isAddToCartButtonVisible = true;
 
 		setTimeout(() => {
 			this.checkAddToCartButtonVisibility();
@@ -76,13 +71,7 @@ export class ButtonManager {
 			};
 
 			const handleResize = () => {
-				if (window.innerWidth > 768) {
-					this.isAddToCartButtonVisible = true;
-					window.removeEventListener('scroll', handleScroll);
-					window.removeEventListener('resize', handleResize);
-				} else {
-					this.checkAddToCartButtonVisibility();
-				}
+				this.checkAddToCartButtonVisibility();
 			};
 
 			window.addEventListener('scroll', handleScroll, { passive: true });
