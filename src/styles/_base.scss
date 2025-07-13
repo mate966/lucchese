@@ -1,5 +1,11 @@
+@use '../styles/breakpoints' as *;
+
 :root {
 	--header-height: 64px;
+
+	@include breakpoint(desktop) {
+		--header-height: 117px;
+	}
 }
 
 body {

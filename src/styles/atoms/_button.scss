@@ -1,2 +1,5 @@
 .a-button {
+	&.is-active {
+		border-bottom: 2px solid theme('colors.primary.DEFAULT');
+	}
 }

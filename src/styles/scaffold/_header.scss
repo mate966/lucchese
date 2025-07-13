@@ -1,2 +1,7 @@
+@use '../breakpoints' as *;
+
 .s-header {
+	@include breakpoint(desktop) {
+		border-bottom: 1px solid theme('colors.neutrals.40');
+	}
 }

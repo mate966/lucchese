@@ -1,5 +1,5 @@
-<header class="s-header tw-fixed tw-top-0 tw-left-0 tw-w-full tw-z-50 tw-flex tw-justify-between tw-items-stretch tw-pt-1.5 tw-h-16 tw-bg-white">
-    <div class="tw-center tw-w-14">
+<header class="s-header tw-fixed tw-top-0 tw-left-0 tw-w-full tw-z-50 tw-flex tw-justify-between tw-items-stretch tw-pt-1.5 tw-h-16 lg:tw-h-[var(--header-height)] tw-bg-white lg:tw-px-4">
+    <div class="tw-center tw-w-14 tw-block lg:tw-hidden">
         {% include '../atoms/a_button.twig' with {
             icons: ['i_hamburger', 'i_close'],
             classes: ['tw-center', 'tw-bg-transparent', 'tw-border-none', 'tw-w-full', 'tw-h-full'],
@@ -10,21 +10,27 @@
             xShow: 'isOpen',
         } %}
     </div>
-    <a href="https://www.lucchese.com" class="tw-absolute tw-left-1/2 -tw-translate-x-1/2 tw-top-1/2 -tw-translate-y-1/2">
+
+    <div class="tw-hidden lg:tw-block">
+        {% include '../scaffold/s_menu.twig' %}
+    </div>
+
+    <a href="https://www.lucchese.com" class="tw-absolute tw-left-1/2 tw-py-[10px] tw-px-3">
         <img src="src/assets/images/Lucchese_Bootmaker_RGB_04086.png" alt="Lucchese Bootmaker Logotype" class="tw-max-w-40 tw-h-[42px]" aria-label="Go to Lucchese Bootmaker website" />
     </a>
-    <div class="tw-center">
+
+    <div class="tw-flex tw-h-fit tw-px-4 tw-py-2">
         <div class="tw-w-14">
-        {% include '../atoms/a_button.twig' with { 
-            icons: ['i_search'],
-            classes: ['tw-center', 'tw-bg-transparent', 'tw-border-none', 'tw-w-full', 'tw-h-full'],
-        } %}
+            {% include '../atoms/a_button.twig' with { 
+                icons: ['i_search'],
+                classes: ['tw-center', 'tw-bg-transparent', 'tw-border-none', 'tw-w-full', 'tw-h-full'],
+            } %}
         </div>
         <div class="tw-w-14">
-        {% include '../atoms/a_button.twig' with { 
-            icons: ['i_cart'],
-            classes: ['tw-center', 'tw-bg-transparent', 'tw-border-none', 'tw-w-full', 'tw-h-full'],
-        } %}
+            {% include '../atoms/a_button.twig' with { 
+                icons: ['i_cart'],
+                classes: ['tw-center', 'tw-bg-transparent', 'tw-border-none', 'tw-w-full', 'tw-h-full'],
+            } %}
         </div>
     </div>
 </header>

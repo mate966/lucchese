@@ -48,7 +48,6 @@ export class ButtonManager {
 		const viewportHeight =
 			window.innerHeight || document.documentElement.clientHeight;
 
-		// Add safety margin - button needs to be completely visible with some space
 		const safetyMargin = 20;
 		const isFullyVisible =
 			rect.top >= 0 && rect.bottom <= viewportHeight - safetyMargin;

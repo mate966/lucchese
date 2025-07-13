@@ -1,7 +1,51 @@
-<div :class="isOpen && 'tw-left-0 is-open'" class="tw-fixed tw-top-50 -tw-left-full tw-w-full tw-h-full tw-bg-primary tw-duration-500 tw-z-10">
+<div :class="isOpen && 'tw-left-0 is-open'" class="tw-fixed tw-top-50 -tw-left-full tw-w-full tw-h-full tw-bg-primary tw-duration-500 tw-z-10 lg:tw-hidden">
     <div class="menu__inner">
         <div class="menu__item">
             <a href="#">Home</a>
         </div>
+    </div>
+</div>
+
+<div class="tw-flex tw-items-center tw-h-full tw-hidden lg:tw-flex">
+    <div class="tw-flex tw-flex-col" x-data="{ activeMenu: 'men' }">
+        <div class="tw-flex tw-mb-2 tw-w-96 lg:tw-flex tw-border-0 tw-border-b tw-border-solid tw-border-neutrals-40">
+            {% for gender in ['men', 'women'] %}
+                {% set label = gender == 'men' ? 'Men' : 'Women' %}
+                <button
+                    type="button"
+                    class="a-button tw-px-4 tw-py-2 tw-w-full tw-bg-transparent tw-text-primary tw-uppercase tw-font-medium a-button--header{% if loop.last %} tw-ml-4{% endif %}"
+                    :class="{ 'is-active': activeMenu === '{{ gender }}' }"
+                    @click="activeMenu = '{{ gender }}'"
+                >
+                    {{ label }}
+                </button>
+            {% endfor %}
+        </div>
+        
+        {% set menuItems = {
+            men: [
+                { label: "Men's Shoes", url: "#" },
+                { label: "Men's Clothing", url: "#" },
+                { label: "Men's Accessories", url: "#" }
+            ],
+            women: [
+                { label: "Women's Shoes", url: "#" },
+                { label: "Women's Clothing", url: "#" },
+                { label: "Women's Accessories", url: "#" }
+            ]
+        } %}
+
+        {% for gender in ['men', 'women'] %}
+            <div 
+                x-show="activeMenu === '{{ gender }}'"
+                class="tw-bg-white tw-rounded tw-p-4 tw-min-w-[400px] tw-z-20"
+            >
+                <ul class="tw-flex tw-gap-6">
+                    {% for item in menuItems[gender] %}
+                        {% include '../components/c_menu-item.twig' with { item: item } %}
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endfor %}
     </div>
 </div>

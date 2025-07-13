@@ -1,5 +1,5 @@
 <button 
-    class="a-button {{ classes|join(' ') }}"
+    class="a-button {{ classes|join(' ') }} a-button--{{ modifiers|join('')}} "
     {{ onclick ? '@click="' ~ onclick ~ '"' : '' }}
     {{ ariaExpanded ? ':aria-expanded="' ~ ariaExpanded ~ '"' : '' }}
     {{ ariaLabel ? ':aria-label="' ~ ariaLabel ~ '"' : '' }}
