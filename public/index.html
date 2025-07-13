@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Priscilla Suede Boot</title>
-            <script type="module" src="/js/index-CrCeoak2.js"></script>
-        <link rel="stylesheet" href="/css/index-DcPogOXw.css">
+            <script type="module" src="/js/index-BLUx_4A6.js"></script>
+        <link rel="stylesheet" href="/css/index-DgynWO_L.css">
     </head>
 <body class="">
 
     <div x-data="toggle" class="tw-text-primary">
-    <header class="s-header tw-fixed tw-top-0 tw-left-0 tw-w-full tw-z-50 tw-flex tw-justify-between tw-items-stretch tw-pt-1.5 tw-h-16 tw-bg-white">
-    <div class="tw-center tw-w-14">
+    <header class="s-header tw-fixed tw-top-0 tw-left-0 tw-w-full tw-z-50 tw-flex tw-justify-between tw-items-stretch tw-pt-1.5 tw-h-16 lg:tw-h-[var(--header-height)] tw-bg-white lg:tw-px-4">
+    <div class="tw-center tw-w-14 tw-block lg:tw-hidden">
         <button 
-    class="a-button tw-center tw-bg-transparent tw-border-none tw-w-full tw-h-full"
+    class="a-button tw-center tw-bg-transparent tw-border-none tw-w-full tw-h-full a-button-- "
     @click="toggle()"
     :aria-expanded="isOpen"
     :aria-label="isOpen ? `close main menu` : `open main menu`"
@@ -46,13 +46,88 @@
 </i>        </div>
             </div>
     </button>    </div>
-    <a href="https://www.lucchese.com" class="tw-absolute tw-left-1/2 -tw-translate-x-1/2 tw-top-1/2 -tw-translate-y-1/2">
+
+    <div 
+    :class="isOpen && 'tw-left-0 is-open'" 
+    class="tw-fixed tw-top-[var(--header-height,4rem)] -tw-left-full tw-w-full tw-h-[calc(100%-var(--header-height,4rem))] tw-bg-white tw-duration-500 tw-z-50 lg:tw-hidden"
+>
+    <div class="menu__inner tw-p-8 tw-h-full tw-overflow-y-auto">
+        <div class="menu__item tw-mb-6">
+            <a href="#" class="tw-text-primary tw-text-xl tw-font-medium tw-block tw-py-3">Home</a>
+        </div>
+    </div>
+</div>
+
+<div class="tw-flex tw-items-center tw-h-full tw-hidden lg:tw-flex">
+    <div class="tw-flex tw-flex-col" x-data="{ activeMenu: 'men' }">
+        <div class="tw-flex tw-mb-2 tw-w-96 lg:tw-flex tw-border-0 tw-border-b tw-border-solid tw-border-neutrals-40">
+                                            <button
+                    type="button"
+                    class="a-button tw-px-4 tw-py-2 tw-w-full tw-bg-transparent tw-text-primary tw-uppercase tw-font-medium a-button--header"
+                    :class="{ 'is-active': activeMenu === 'men' }"
+                    @click="activeMenu = 'men'"
+                >
+                    Men
+                </button>
+                                            <button
+                    type="button"
+                    class="a-button tw-px-4 tw-py-2 tw-w-full tw-bg-transparent tw-text-primary tw-uppercase tw-font-medium a-button--header tw-ml-4"
+                    :class="{ 'is-active': activeMenu === 'women' }"
+                    @click="activeMenu = 'women'"
+                >
+                    Women
+                </button>
+                    </div>
+        
+        
+                    <div 
+                x-show="activeMenu === 'men'"
+                class="tw-bg-white tw-rounded tw-p-4 tw-min-w-[400px] tw-z-20"
+            >
+                <ul class="tw-flex tw-gap-6">
+                                            <li>
+    <a href="#" class="tw-block tw-text-primary tw-uppercase tw-text-sm tw-font-medium hover:tw-underline">
+        Men's Shoes
+    </a>
+</li>                                             <li>
+    <a href="#" class="tw-block tw-text-primary tw-uppercase tw-text-sm tw-font-medium hover:tw-underline">
+        Men's Clothing
+    </a>
+</li>                                             <li>
+    <a href="#" class="tw-block tw-text-primary tw-uppercase tw-text-sm tw-font-medium hover:tw-underline">
+        Men's Accessories
+    </a>
+</li>                                     </ul>
+            </div>
+                    <div 
+                x-show="activeMenu === 'women'"
+                class="tw-bg-white tw-rounded tw-p-4 tw-min-w-[400px] tw-z-20"
+            >
+                <ul class="tw-flex tw-gap-6">
+                                            <li>
+    <a href="#" class="tw-block tw-text-primary tw-uppercase tw-text-sm tw-font-medium hover:tw-underline">
+        Women's Shoes
+    </a>
+</li>                                             <li>
+    <a href="#" class="tw-block tw-text-primary tw-uppercase tw-text-sm tw-font-medium hover:tw-underline">
+        Women's Clothing
+    </a>
+</li>                                             <li>
+    <a href="#" class="tw-block tw-text-primary tw-uppercase tw-text-sm tw-font-medium hover:tw-underline">
+        Women's Accessories
+    </a>
+</li>                                     </ul>
+            </div>
+            </div>
+</div>
+    <a href="https://www.lucchese.com" class="tw-absolute tw-left-1/2 tw-py-[10px] tw-px-3 -tw-translate-x-1/2" target="_blank" rel="noopener noreferrer" aria-label="Go to Lucchese Bootmaker website">
         <img src="/assets/images/Lucchese_Bootmaker_RGB_04086.png" alt="Lucchese Bootmaker Logotype" class="tw-max-w-40 tw-h-[42px]" aria-label="Go to Lucchese Bootmaker website" />
     </a>
-    <div class="tw-center">
+
+    <div class="tw-flex lg:tw-h-fit tw-px-4 tw-py-2 tw-h-full">
         <div class="tw-w-14">
-        <button 
-    class="a-button tw-center tw-bg-transparent tw-border-none tw-w-full tw-h-full"
+            <button 
+    class="a-button tw-center tw-bg-transparent tw-border-none tw-w-full tw-h-full a-button-- "
     
     
     
@@ -75,8 +150,8 @@
             </div>
     </button>        </div>
         <div class="tw-w-14">
-        <button 
-    class="a-button tw-center tw-bg-transparent tw-border-none tw-w-full tw-h-full"
+            <button 
+    class="a-button tw-center tw-bg-transparent tw-border-none tw-w-full tw-h-full a-button-- "
     
     
     
@@ -101,13 +176,7 @@
             </div>
     </button>        </div>
     </div>
-</header>    <div :class="isOpen && 'tw-left-0 is-open'" class="tw-fixed tw-top-50 -tw-left-full tw-w-full tw-h-full tw-bg-primary tw-duration-500 tw-z-10">
-    <div class="menu__inner">
-        <div class="menu__item">
-            <a href="#">Home</a>
-        </div>
-    </div>
-</div>    </div>
+</header>    </div>
 
     <div 
     x-data="sizes()"
@@ -119,6 +188,119 @@
     <div class="wrapper tw-text-primary" id="wrapper">
         <main id="content" class="content" aria-live="polite" role="main" aria-label="Main content">
             <div class="container">
+                                    <section class="module module-bar">
+                        <div class="bar tw-mx-4 tw-flex tw-items-center tw-justify-between tw-shadow-sm tw-rounded-lg tw-mx-4 2xl:tw-mx-auto lg:tw-max-w-container">
+    <nav class="breadcrumb tw-flex tw-items-center tw-gap-2">
+        <ul class="breadcrumb__list tw-flex tw-items-center tw-gap-2">
+            <li class="breadcrumb__item">
+                <a href="/" class="breadcrumb__link tw-text-primary">Home</a>
+            </li>
+            <li class="breadcrumb__item tw-flex tw-items-center tw-px-1 tw-text-red">
+                
+<span class="i-slash"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" aria-hidden="true">
+            <g id="slash"><path d="M33.5,95.78a2.27,2.27,0,0,1-.71-.13,2,2,0,0,1-1.16-2.58l33-87.55a2,2,0,1,1,3.74,1.41l-33,87.55A2,2,0,0,1,33.5,95.78Z" fill="#b3b3b3"></path></g>
+        </svg></span>            </li>
+            <li class="breadcrumb__item">
+                <a href="/" class="breadcrumb__link tw-text-primary">All</a>
+            </li>
+            <li class="breadcrumb__item tw-flex tw-items-center tw-px-1">
+                
+<span class="i-slash"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" aria-hidden="true">
+            <g id="slash"><path d="M33.5,95.78a2.27,2.27,0,0,1-.71-.13,2,2,0,0,1-1.16-2.58l33-87.55a2,2,0,1,1,3.74,1.41l-33,87.55A2,2,0,0,1,33.5,95.78Z" fill="#b3b3b3"></path></g>
+        </svg></span>            </li>
+            <li class="breadcrumb__item">
+                <a href="/" class="breadcrumb__link tw-text-primary">Priscilla Suede</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="tw-flex tw-items-center tw-gap-4">
+        <hr class="tw-w-[1px] tw-h-6 tw-bg-neutrals-40">
+
+        <div 
+    class="s-share tw-relative group"
+    x-data="{ isOpen: false }"
+    @mouseenter="if(window.innerWidth >= 1024) isOpen = true"
+    @mouseleave="if(window.innerWidth >= 1024) isOpen = false"
+>
+    <div class="s-share__container">
+        <div class="s-share__content">
+            <button 
+    class="a-button tw-flex tw-items-center tw-gap-2 tw-py-2 tw-h-12 tw-tracking-wide tw-uppercase tw-text-sm tw-font-medium a-button-- "
+    @click="isOpen = !isOpen"
+    
+    
+    
+    
+    
+>
+    Share
+        <div class="a-button__icons">
+                <div 
+            class="a-button__icon"        >
+            <i class="icon icon--share">
+    
+<span class="i-share"><svg class="tw-h-6 tw-w-6 tw-flex-shrink-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M8.0625 5.4375L12 1.5L15.9375 5.4375" stroke="#0C2752" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M12 12V1.5" stroke="#0C2752" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M16.5 9H18.75C18.9489 9 19.1397 9.07902 19.2803 9.21967C19.421 9.36032 19.5 9.55109 19.5 9.75V19.5C19.5 19.6989 19.421 19.8897 19.2803 20.0303C19.1397 20.171 18.9489 20.25 18.75 20.25H5.25C5.05109 20.25 4.86032 20.171 4.71967 20.0303C4.57902 19.8897 4.5 19.6989 4.5 19.5V9.75C4.5 9.55109 4.57902 9.36032 4.71967 9.21967C4.86032 9.07902 5.05109 9 5.25 9H7.5" stroke="#0C2752" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg></span></i>        </div>
+            </div>
+    </button>        </div>
+
+        <div 
+            x-show="isOpen"
+            x-transition
+            @click.away="isOpen = false"
+            class="tw-absolute tw-top-full tw-right-0 tw-bg-white tw-border tw-border-gray-200 tw-shadow-lg tw-z-50 tw-px-1 tw-py-2 tw-space-y-2 tw-min-w-[120px]"
+        >
+            <button 
+    class="a-button tw-flex tw-justify-end tw-gap-2 tw-items-center tw-flex-row-reverse tw-w-full tw-text-left tw-px-3 tw-py-2 tw-text-sm tw-hover:tw-bg-gray-50 tw-border-0 a-button-- "
+    
+    
+    
+    
+    
+    
+>
+    Email
+        <div class="a-button__icons">
+                <div 
+            class="a-button__icon"        >
+            <i class="icon icon--envelope">
+    
+<span class="i-envelope"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+        <path d="M28 7L16 18L4 7" stroke="#0C2752" stroke-linecap="round" stroke-linejoin="round"></path>
+        <path d="M4 7H28V24C28 24.2652 27.8946 24.5196 27.7071 24.7071C27.5196 24.8946 27.2652 25 27 25H5C4.73478 25 4.48043 24.8946 4.29289 24.7071C4.10536 24.5196 4 24.2652 4 24V7Z" stroke="#0C2752" stroke-linecap="round" stroke-linejoin="round"></path>
+        <path d="M13.8125 16L4.3125 24.7125" stroke="#0C2752" stroke-linecap="round" stroke-linejoin="round"></path>
+        <path d="M27.6875 24.7125L18.1875 16" stroke="#0C2752" stroke-linecap="round" stroke-linejoin="round"></path>
+    </svg></span></i>        </div>
+            </div>
+    </button>            <button 
+    class="a-button tw-flex tw-justify-end tw-gap-2 tw-items-center tw-flex-row-reverse tw-w-full tw-text-left tw-px-3 tw-py-2 tw-text-sm tw-hover:tw-bg-gray-50 tw-border-0 a-button-- "
+    
+    
+    
+    
+    
+    
+>
+    SMS
+        <div class="a-button__icons">
+                <div 
+            class="a-button__icon"        >
+            <i class="icon icon--phone">
+    
+<span class="i-phone"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" role="img" aria-hidden="true">
+        <path d="M16.5 2.25H7.5C6.67157 2.25 6 2.92157 6 3.75V20.25C6 21.0784 6.67157 21.75 7.5 21.75H16.5C17.3284 21.75 18 21.0784 18 20.25V3.75C18 2.92157 17.3284 2.25 16.5 2.25Z" stroke="#0C2752" stroke-linecap="round" stroke-linejoin="round"></path>
+        <path d="M6 5.25H18" stroke="#0C2752" stroke-linecap="round" stroke-linejoin="round"></path>
+        <path d="M6 18.75H18" stroke="#0C2752" stroke-linecap="round" stroke-linejoin="round"></path>
+    </svg></span></i>        </div>
+            </div>
+    </button>        </div>
+    </div>
+</div>    </div>
+</div>                    </section>
                                     <section class="module module-product">
                         <div class="m-product lg:tw-mb-[128px]" x-data="product()" x-init="loadProduct('GY4579.S54-2019-B-6')">
     <div x-show="loading" class="tw-h-[400px] tw-flex tw-items-center tw-justify-center tw-gap-3">
@@ -147,7 +329,7 @@
             </template>
 
             <button 
-    class="a-button tw-absolute tw-z-10 tw-top-2 tw-right-2 tw-w-12 tw-h-12 tw-center"
+    class="a-button tw-absolute tw-z-10 tw-top-2 tw-right-2 tw-w-12 tw-h-12 tw-center a-button-- "
     
     
     
@@ -184,7 +366,7 @@
 
             <div x-show="hasMoreImages()" class="tw-mt-4 tw-flex tw-justify-center tw-hidden lg:tw-flex">
                 <button 
-    class="a-button tw-hidden lg:tw-flex tw-font-brandonGrotesque tw-border tw-border-solid tw-border-primary tw-bg-white tw-w-full tw-justify-center tw-items-center tw-text-md tw-font-medium tw-tracking-wide tw-text-primary tw-uppercase tw-p-4 tw-mb-6 tw-h-14 tw-max-w-72 hover:tw-cursor-pointer"
+    class="a-button tw-hidden lg:tw-flex tw-font-brandonGrotesque tw-border tw-border-solid tw-border-primary tw-bg-white tw-w-full tw-justify-center tw-items-center tw-text-md tw-font-medium tw-tracking-wide tw-text-primary tw-uppercase tw-p-4 tw-mb-6 tw-h-14 tw-max-w-72 hover:tw-cursor-pointer a-button-- "
     @click="isGalleryExpanded ? collapseGallery() : expandGallery()"
     
     
@@ -255,7 +437,7 @@
             <div class="c-product-details__description">
                 <div class="tw-text-lg tw-text-black" x-text="product.description"></div>
                 <button 
-    class="a-button tw-py-3 tw-text-lg tw-font-futura tw-text-primary tw-underline"
+    class="a-button tw-py-3 tw-text-lg tw-font-futura tw-text-primary tw-underline a-button-- "
     
     
     
@@ -290,7 +472,7 @@
 </div>                </div>
 
                 <button 
-    class="a-button tw-w-full tw-flex tw-justify-between tw-items-center tw-border tw-border-solid tw-text-primary tw-uppercase tw-p-4 tw-mb-6 tw-text-md tw-font-medium tw-tracking-wide tw-text-primary"
+    class="a-button tw-w-full tw-flex tw-justify-between tw-items-center tw-border tw-border-solid tw-text-primary tw-uppercase tw-p-4 tw-mb-6 tw-text-md tw-font-medium tw-tracking-wide tw-text-primary a-button-- "
     @click="toggle()"
     
     
@@ -320,7 +502,7 @@
             
             <div class="sizes__close tw-w-12 tw-h-12 tw-center">
                 <button 
-    class="a-button tw-text-primary tw-uppercase tw-font-light tw-text-md tw-leading-md tw-tracking-wide"
+    class="a-button tw-text-primary tw-uppercase tw-font-light tw-text-md tw-leading-md tw-tracking-wide a-button-- "
     @click="close()"
     
     
@@ -442,7 +624,7 @@
                     @resize.window="checkAddToCartButtonVisibility">
                 <div x-ref="addToCartBtn" x-show="selectedSize">
                     <button 
-    class="a-button tw-w-full tw-bg-primary tw-text-md tw-font-normal tw-tracking-wide tw-leading-md tw-uppercase tw-border-0 tw-cursor-pointer tw-text-white tw-h-16"
+    class="a-button tw-w-full tw-bg-primary tw-text-md tw-font-normal tw-tracking-wide tw-leading-md tw-uppercase tw-border-0 tw-cursor-pointer tw-text-white tw-h-16 a-button-- "
     @click="addToCart()"
     
     
@@ -453,13 +635,48 @@
     
     </button>                </div>
                 <div 
-                    x-show="!isAddToCartButtonVisible && selectedSize"
-                    class="tw-fixed tw-bottom-[10px] tw-left-0 tw-right-0 tw-z-[100] tw-w-full tw-flex tw-justify-center tw-pointer-events-none tw-px-4"
-                    class="tw-w-full tw-flex tw-justify-center tw-pointer-events-none tw-px-4"
-                >
-                    <div class="tw-w-full tw-pointer-events-auto">
-                        <button 
-    class="a-button tw-w-full tw-bg-primary tw-text-md tw-font-normal tw-tracking-wide tw-leading-md tw-uppercase tw-border-0 tw-cursor-pointer tw-text-white tw-h-16"
+    x-show="!isAddToCartButtonVisible && selectedSize"
+    x-transition:enter="tw-transition-transform tw-duration-300 tw-ease-out"
+    x-transition:enter-start="tw-translate-y-full"
+    x-transition:enter-end="tw-translate-y-0"
+    x-transition:leave="tw-transition-transform tw-duration-300 tw-ease-in"
+    x-transition:leave-start="tw-translate-y-0"
+    x-transition:leave-end="tw-translate-y-full"
+    class="tw-hidden lg:tw-block tw-fixed tw-right-16 tw-bottom-8 tw-z-[100] tw-pointer-events-none"
+>
+    <div class="tw-bg-white tw-w-[628px] tw-border tw-border-gray-200 tw-shadow-xl tw-p-4 tw-flex tw-items-center tw-gap-4 tw-pointer-events-auto">
+        <div class="tw-w-14 tw-h-14 tw-flex-shrink-0 tw-overflow-hidden tw-bg-gray-100">
+            <img 
+                :src="product.gallery && product.gallery[0] ? product.gallery[0] : '/assets/images/product/product-image-1-m.webp'" 
+                :alt="product.title"
+                class="tw-w-full tw-h-full tw-object-cover"
+            />
+        </div>
+
+        <div class="tw-flex-1 tw-min-w-0">
+            <h3 class="tw-text-xl tw-text-primary tw-font-light tw-leading-xl tw-uppercase" x-text="product.title"></h3>
+            <div class="tw-mt-1 tw-text-lg tw-leading-lg tw-text-primary tw-text-gray-500 tw-space-y-0.5">
+                <template x-if="selectedSize">
+                    <div class="tw-flex tw-flex-wrap tw-items-center tw-gap-y-0.5">
+                        <template x-if="selectedSize.size">
+                            <span>Size: <span class="tw-text-gray-900" x-text="selectedSize.size"></span></span>
+                        </template>
+                        <hr class="tw-block tw-w-px tw-h-4 tw-flex-basis-px tw-mx-2 tw-bg-neutrals-40">
+                        <template x-if="selectedSize.widths && selectedSize.widths.length > 0">
+                            <span>Width: <span class="tw-text-gray-900" x-text="selectedSize.widths[0]"></span></span>
+                        </template>
+                        <hr class="tw-block tw-w-px tw-h-4 tw-flex-basis-px tw-mx-2 tw-bg-neutrals-40">
+                        <template x-if="selectedSize.toeHeels && selectedSize.toeHeels.length > 0">
+                            <span>Toe + Heel: <span class="tw-text-gray-900" x-text="selectedSize.toeHeels[0]"></span></span>
+                        </template>
+                    </div>
+                </template>
+            </div>
+        </div>
+
+        <div class="tw-flex-shrink-0">
+            <button 
+    class="a-button tw-bg-primary tw-text-white tw-text-md tw-font-medium tw-px-2 tw-cursor-pointer tw-uppercase tw-tracking-wide tw-h-16 tw-whitespace-nowrap tw-transition-colors hover:tw-bg-opacity-90 a-button-- "
     @click="addToCart()"
     
     
@@ -468,9 +685,27 @@
     x-text="`Add to cart - $${product.price}`"
 >
     
-    </button>                    </div>
-                </div>
-            </div>
+    </button>        </div>
+    </div>
+</div>
+
+<div 
+    x-show="!isAddToCartButtonVisible && selectedSize"
+    class="tw-block lg:tw-hidden tw-fixed tw-bottom-[10px] tw-left-0 tw-right-0 tw-z-[100] tw-w-full tw-flex tw-justify-center tw-pointer-events-none tw-px-4"
+>
+    <div class="tw-w-full tw-pointer-events-auto">
+        <button 
+    class="a-button tw-w-full tw-bg-primary tw-text-md tw-font-normal tw-tracking-wide tw-leading-md tw-uppercase tw-border-0 tw-cursor-pointer tw-text-white tw-h-10 a-button-- "
+    @click="addToCart()"
+    
+    
+    
+    
+    x-text="`Add to cart - $${product.price}`"
+>
+    
+    </button>    </div>
+</div>             </div>
         </div>
 
         <div class="c-product-details__bottom">
@@ -486,7 +721,7 @@
                 <li class="c-accordion-item" x-data="accordion()">
     <div class="c-accordion-item__button">
         <button 
-    class="a-button tw-uppercase tw-font-medium tw-tracking-wide tw-text-md"
+    class="a-button tw-uppercase tw-font-medium tw-tracking-wide tw-text-md a-button-- "
     @click="toggle()"
     :aria-expanded="isOpen"
     :aria-label="isOpen ? `close accordion` : `open accordion`"
@@ -559,7 +794,7 @@
 </li>                <li class="c-accordion-item" x-data="accordion()">
     <div class="c-accordion-item__button">
         <button 
-    class="a-button tw-uppercase tw-font-medium tw-tracking-wide tw-text-md"
+    class="a-button tw-uppercase tw-font-medium tw-tracking-wide tw-text-md a-button-- "
     @click="toggle()"
     :aria-expanded="isOpen"
     :aria-label="isOpen ? `close accordion` : `open accordion`"
@@ -624,7 +859,7 @@
 </li>                <li class="c-accordion-item" x-data="accordion()">
     <div class="c-accordion-item__button">
         <button 
-    class="a-button tw-uppercase tw-font-medium tw-tracking-wide tw-text-md"
+    class="a-button tw-uppercase tw-font-medium tw-tracking-wide tw-text-md a-button-- "
     @click="toggle()"
     :aria-expanded="isOpen"
     :aria-label="isOpen ? `close accordion` : `open accordion`"
@@ -740,7 +975,7 @@
 
     <div class="c-recommendations__product-favorite tw-absolute tw-z-10 tw-top-2 tw-right-2 tw-w-12 tw-h-12 tw-center">
         <button 
-    class="a-button "
+    class="a-button  a-button-- "
     
     
     
@@ -779,7 +1014,7 @@
                 </div>
             </div>
         </div>
-        <div class="c-recommendations__product-colors tw-w-full tw-absolute tw-bottom-[112px] lg:tw-top-0 tw-left-0 tw-px-5 tw-translate-y-[50%] lg:tw-relative lg:tw-translate-y-0 lg:tw-px-4 lg:tw-py-2 lg:tw-pb-2 lg:tw-min-h-[52px] lg:tw-flex lg:tw-items-center">
+        <div class="c-recommendations__product-colors tw-z-10 tw-w-full tw-absolute tw-bottom-[112px] lg:tw-top-0 tw-left-0 tw-px-5 tw-translate-y-[50%] lg:tw-relative lg:tw-translate-y-0 lg:tw-px-4 lg:tw-py-2 lg:tw-pb-2 lg:tw-min-h-[52px] lg:tw-flex lg:tw-items-center">
     <div class="c-recommendations__product-colors-title lg:tw-block tw-hidden tw-text-xs tw-font-semibold tw-text-gray-700  tw-pointer-events-none">
         <span 
             class="tw-text-[14px] tw-leading-[18px] tw-font-normal tw-text-neutrals-80 "
