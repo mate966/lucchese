@@ -1,5 +1,27 @@
-<div class="bar">
-    <nav class="breadcrumb">
+<div class="bar tw-mx-4 tw-flex tw-items-center tw-justify-between tw-shadow-sm tw-rounded-lg">
+    <nav class="breadcrumb tw-flex tw-items-center tw-gap-2">
+        <ul class="breadcrumb__list tw-flex tw-items-center tw-gap-2">
+            <li class="breadcrumb__item">
+                <a href="/" class="breadcrumb__link tw-text-primary">Home</a>
+            </li>
+            <li class="breadcrumb__item tw-flex tw-items-center tw-px-1 tw-text-red">
+                {% include '../icons/i_slash.twig' %}
+            </li>
+            <li class="breadcrumb__item">
+                <a href="/" class="breadcrumb__link tw-text-primary">All</a>
+            </li>
+            <li class="breadcrumb__item tw-flex tw-items-center tw-px-1">
+                {% include '../icons/i_slash.twig' %}
+            </li>
+            <li class="breadcrumb__item">
+                <a href="/" class="breadcrumb__link tw-text-primary">Priscilla Suede</a>
+            </li>
+        </ul>
     </nav>
-    bar
+
+    <div class="tw-flex tw-items-center tw-gap-4">
+        <hr class="tw-w-[1px] tw-h-6 tw-bg-neutrals-40">
+
+        {% include '../scaffold/s_share.twig' %}
+    </div>
 </div>
