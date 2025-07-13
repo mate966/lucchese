@@ -9,6 +9,7 @@ export default {
 			},
 			maxWidth: {
 				'product-gallery-container': 'calc(50vw + 214px)',
+				container: '1548px',
 			},
 			colors: {
 				primary: {
